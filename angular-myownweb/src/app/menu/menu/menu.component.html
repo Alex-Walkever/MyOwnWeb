@@ -1,0 +1,36 @@
+<mat-toolbar>
+    <span>
+        <a mat-button routerLink="">
+            <mat-icon>home</mat-icon>
+            {{'home' | translate}}
+        </a>
+    </span>
+
+    <div>
+        <a mat-button routerLink="/{{[urlStrings.urlAboutMe]}}">
+            <mat-icon>person</mat-icon>
+            {{'aboutMe' | translate}}
+        </a>
+    </div>
+
+    <div class="space"> </div>
+    <div class="lenguage-Buttons">
+        <ng-container>
+            <button mat-raised-button (click)="translateText('es')">
+                <mat-icon>
+                    <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/MX.svg" />
+                </mat-icon>
+                {{'changeLanguage.es' | translate}}
+            </button>
+        </ng-container>
+
+        <ng-container>
+            <button mat-raised-button (click)="translateText('en')">
+                <mat-icon>
+                    <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" />
+                </mat-icon>
+                {{'changeLanguage.en' | translate}}
+            </button>
+        </ng-container>
+    </div>
+</mat-toolbar>
