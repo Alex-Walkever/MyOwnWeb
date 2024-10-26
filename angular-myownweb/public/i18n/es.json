@@ -3,5 +3,12 @@
     "changeLanguage.es": "Español",
     "changeLanguage.en": "Inglés",
     "home": "Inicio",
-    "aboutMe": "Acerca de mí"
+    "showStrings": "Mostrar lineas traducidas",
+    "aboutMe": "Acerca de mí",
+    "aboutMe.err.entitle": "Se requiere título en inglés",
+    "aboutMe.err.enResume": "Se requiere currículum en inglés",
+    "aboutMe.err.startDate": "La fecha de inicio es obligatoria",
+    "aboutMe.err.endDate": "Se requiere fecha de finalización o activar trabajo actual",
+    "aboutMe.err.enProject": "Se requiere proyecto en inglés",
+    "aboutMe.err.enSkills": "Se requieren habilidades en inglés"
 }

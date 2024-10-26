@@ -1,3 +1,7 @@
+import { inject } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
+import { LocalStorageStrings } from "./utility-strings";
+
 export function extractErrors(obj: any): string[] {
     const err = obj.error.errors;
 
@@ -21,4 +25,12 @@ export function extractErrorsEntity(obj: any): string[] {
     }
 
     return errorMessage;
+}
+
+export function getTranslation(str: string, translate: TranslateService): string{
+    let returnString = '';
+    translate.get(str).subscribe((res :string) => {
+        returnString = res;
+    });
+    return returnString;
 }

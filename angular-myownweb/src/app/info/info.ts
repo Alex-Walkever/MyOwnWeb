@@ -5,12 +5,12 @@ export interface ExperienceCreationDTO{
     esResume: string;
     startDate: Date;
     endDate: Date;
-    enDescription: string;
-    esDescription: string;
     enProject: string;
     esProject: string;
     enSkills: string;
     esSkills: string;
+    urlToProject: string;
+    currentWork: boolean;
 }
 
 export interface ExperienceDTO{
@@ -21,10 +21,10 @@ export interface ExperienceDTO{
     esResume: string;
     startDate: Date;
     endDate: Date;
-    enDescription: string;
-    esDescription: string;
     enProject: string;
     esProject: string;
     enSkills: string;
     esSkills: string;
+    urlToProject: string;
+    currentWork: boolean;
 }

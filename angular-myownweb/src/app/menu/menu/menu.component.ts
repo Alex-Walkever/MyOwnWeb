@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { UrlStrings } from '../../tools/url-strings';
+import { UrlStrings } from '../../tools/utility-strings';
 
 @Component({
   selector: 'app-menu',
@@ -17,12 +17,9 @@ export class MenuComponent {
   translate = inject(TranslateService);
   urlStrings = UrlStrings;
 
-  constructor() {
-    
-  }
-
   translateText(lang: string){
     this.translate.use(lang);
+    this.translate.setDefaultLang(lang);
     localStorage.setItem("lang", lang);
   }
 }

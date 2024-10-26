@@ -3,5 +3,12 @@
     "changeLanguage.es": "Spanish",
     "changeLanguage.en": "English",
     "home": "Home",
-    "aboutMe": "About me"
+    "showStrings": "Show translate strings",
+    "aboutMe": "About me",
+    "aboutMe.err.entitle": "Title in English is required",
+    "aboutMe.err.enResume": "Resume in English is required",
+    "aboutMe.err.startDate": "Start date is required",
+    "aboutMe.err.endDate": "End date is required or activate current work",
+    "aboutMe.err.enProject": "Project in English is required",
+    "aboutMe.err.enSkills": "Skills in English is required"
 }

@@ -14,6 +14,14 @@
     </div>
 
     <div class="space"> </div>
+
+    <div>
+        <a mat-button routerLink="/{{[urlStrings.urlShowTranslateStrings]}}">
+            <mat-icon>menu_book</mat-icon>
+            {{'showStrings' | translate}}
+        </a>
+    </div>
+
     <div class="lenguage-Buttons">
         <ng-container>
             <button mat-raised-button (click)="translateText('es')">

@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ComponentRef, inject, Input, ViewChild, ViewC
 import { Router } from '@angular/router';
 import { SERVICE_CRUD_TOKEN } from '../providers/providers';
 import { IServiceCRUD } from '../interfaces/IServiceCRUD';
-import { extractErrors } from '../utilityFunctions';
+import { extractErrors } from '../utility-functions';
 import { ShowErrorsComponent } from "../show-errors/show-errors.component";
 
 @Component({
