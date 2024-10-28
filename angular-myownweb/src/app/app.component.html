@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 
-<button class="dowArrow" mat-icon-button (click)="show()"><mat-icon>arrow_drop_down</mat-icon></button>
+<button class="dowArrow" mat-icon-button [disabled]="clickable" (click)="show()"><mat-icon>arrow_drop_down</mat-icon></button>
 
 <div class="container">
     <router-outlet></router-outlet>

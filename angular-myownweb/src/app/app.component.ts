@@ -1,9 +1,9 @@
 import { Component, inject, input, OnInit, ViewChild } from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { MenuComponent } from "./menu/menu/menu.component";
-import { timer } from 'rxjs';
+import { BehaviorSubject, debounceTime, timer } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { globalAnimationShowAndHide, AnimationShowAndHide } from './tools/utility-functions';
 
@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
 
   translateService = inject(TranslateService);
   matIconRegistry = inject(MatIconRegistry);
+  router = inject(Router);
 
   constructor() {
     var lang = localStorage.getItem("lang");
@@ -58,34 +59,37 @@ export class AppComponent implements OnInit {
       interations: 1
     }];
 
-    //this.show();
-    //this.child?.show();
-    this.secondsCounter.subscribe(() => {
-      this.hide();
+    this.router.events.subscribe(()=>{
+      this.timerBehavior.next();
     });
   }
 
-  time = 2000;
-  secondsCounter = timer(this.time);
+  waitTime = 10000;
+  timerBehavior = new BehaviorSubject<void>(undefined);
+  timerPipe = this.timerBehavior.pipe(debounceTime(this.waitTime));
+  timerSubscribe = this.timerPipe.subscribe(() => {
+    this.hide();
+  });
 
   animatedShow!: AnimationShowAndHide[];
   animatedHide!: AnimationShowAndHide[];
+  clickable: boolean = true;
+
 
 
   show() {
     globalAnimationShowAndHide(this.animatedShow);
     this.child?.show();
 
-    this.secondsCounter = timer(this.time);
-    this.secondsCounter.subscribe(() => {
-      this.hide();
-    });
+    this.clickable = true;
+    this.timerBehavior.next();
   }
 
 
   hide() {
     globalAnimationShowAndHide(this.animatedHide);
     this.child?.hide();
+    this.clickable = false;
   }
 
 
