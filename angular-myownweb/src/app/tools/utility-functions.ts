@@ -19,7 +19,7 @@ export function extractErrors(obj: any): string[] {
 export function extractErrorsEntity(obj: any): string[] {
     let errorMessage: string[] = [];
 
-    for(let i = 0; i < obj.error.length; i++){
+    for (let i = 0; i < obj.error.length; i++) {
         const element = obj.error[i];
         errorMessage.push(element.description);
     }
@@ -27,10 +27,38 @@ export function extractErrorsEntity(obj: any): string[] {
     return errorMessage;
 }
 
-export function getTranslation(str: string, translate: TranslateService): string{
+export function getTranslation(str: string, translate: TranslateService): string {
     let returnString = '';
-    translate.get(str).subscribe((res :string) => {
+    translate.get(str).subscribe((res: string) => {
         returnString = res;
     });
     return returnString;
+}
+
+export interface AnimationShowAndHide {
+    htmlElement: HTMLElement;
+    transalteYStrat: string;
+    transalteYEnd: string;
+    duration: number;
+    interations: number;
+}
+
+export function globalAnimationShowAndHide(animation: AnimationShowAndHide[]) {
+    for (let i = 0; i < animation.length; i++) {
+        const element = animation[i];
+
+        let Style = [
+            { transform: "translateY(" + element.transalteYStrat + ")" },
+            { transform: "translateY(" + element.transalteYEnd + ")" }
+        ];
+        let timing = {
+            duration: element.duration,
+            iterations: element.interations
+        };
+
+        const animated = element.htmlElement.animate(Style, timing);
+        animated.onfinish = () => {
+            element.htmlElement.style.transform = "translateY(" + element.transalteYEnd + ")";
+        };
+    }
 }

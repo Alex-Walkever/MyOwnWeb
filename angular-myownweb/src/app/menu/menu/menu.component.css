@@ -1,22 +1,23 @@
-mat-toolbar{
+/* mat-toolbar */
+mat-toolbar {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
     z-index: 1000;
 }
 
-.space{
+.space {
     flex: 1 1 auto;
 }
 
-.lenguage-Buttons{
+.lenguage-Buttons {
     display: flex;
 }
 
-.lenguage-Buttons mat-icon{
+.lenguage-Buttons mat-icon {
     margin-bottom: 9px;
 }
 
-.lenguage-Buttons button{
+.lenguage-Buttons button {
     margin-right: 5px;
 }
