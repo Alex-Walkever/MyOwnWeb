@@ -9,3 +9,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 body{
     height: fit-content;
 }
+
+.lenguage-Buttons{
+    position: fixed;
+    bottom: 9px;
+    right: 0;
+}
+
+.lenguage-Buttons mat-icon {
+    margin-bottom: 9px;
+}
+
+.lenguage-Buttons button {
+    margin-right: 5px;
+}

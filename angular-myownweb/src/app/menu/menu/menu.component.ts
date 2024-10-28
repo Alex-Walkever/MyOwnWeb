@@ -3,11 +3,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { UrlStrings } from '../../tools/utility-strings';
-import { timer } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { transform } from 'typescript';
 import { AnimationShowAndHide, globalAnimationShowAndHide } from '../../tools/utility-functions';
 
 @Component({
@@ -34,14 +32,10 @@ export class MenuComponent implements OnInit{
       interations: 1
     }];
   }
-  translate = inject(TranslateService);
+
   urlStrings = UrlStrings;
 
-  translateText(lang: string) {
-    this.translate.use(lang);
-    this.translate.setDefaultLang(lang);
-    localStorage.setItem("lang", lang);
-  }
+  
 
   animatedShow!: AnimationShowAndHide[];
   animatedHide!: AnimationShowAndHide[];

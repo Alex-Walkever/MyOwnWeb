@@ -1,7 +1,7 @@
 import { Component, inject, input, OnInit, ViewChild } from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { Router, RouterOutlet } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MenuComponent } from "./menu/menu/menu.component";
 import { BehaviorSubject, debounceTime, timer } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,7 +10,7 @@ import { globalAnimationShowAndHide, AnimationShowAndHide } from './tools/utilit
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MenuComponent, MatIconModule, MatButtonModule],
+  imports: [RouterOutlet, MenuComponent, MatIconModule, MatButtonModule, TranslateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -92,5 +92,9 @@ export class AppComponent implements OnInit {
     this.clickable = false;
   }
 
-
+  translateText(lang: string) {
+    this.translateService.use(lang);
+    this.translateService.setDefaultLang(lang);
+    localStorage.setItem("lang", lang);
+  }
 }

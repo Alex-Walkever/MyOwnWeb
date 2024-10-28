@@ -9,15 +9,3 @@ mat-toolbar {
 .space {
     flex: 1 1 auto;
 }
-
-.lenguage-Buttons {
-    display: flex;
-}
-
-.lenguage-Buttons mat-icon {
-    margin-bottom: 9px;
-}
-
-.lenguage-Buttons button {
-    margin-right: 5px;
-}
