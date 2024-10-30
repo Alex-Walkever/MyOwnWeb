@@ -1,8 +1,4 @@
-<p>about-me works!</p>
-
-<ng-container>
-    <button mat-flat-button (click)="testString('aboutMe.err.endDate')">click</button>
-</ng-container>
-@if(test){
-    <h1>{{test}}</h1>
-}
+<app-index-entity title="{{'aboutMe' | translate}}" 
+urlCreate="/{{[urlString.urlCreateExperience]}}" 
+urlEdit="/{{[urlString.urlCreateExperience]}}">
+</app-index-entity>

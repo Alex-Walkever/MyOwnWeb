@@ -1,0 +1,23 @@
+@if (!list){
+    <div #loading>
+        <ng-content select="[loading]"></ng-content>
+    </div>
+
+    @if(!loading.innerHTML.trim()){
+        <img src="Loading.gif" />
+    }
+}
+@else if (list.length == 0){
+<div #empty>
+    <ng-content select="[empty]"></ng-content>
+</div>
+
+@if (!empty.innerHTML.trim()){
+<div>
+    <p>{{'genericList.notElement' | translate}}</p>
+</div>
+}
+}
+@else{
+<ng-content selected="[content]"></ng-content>
+}

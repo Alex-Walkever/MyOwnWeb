@@ -10,5 +10,22 @@
     "aboutMe.err.startDate": "Start date is required",
     "aboutMe.err.endDate": "End date is required or activate current work",
     "aboutMe.err.enProject": "Project in English is required",
-    "aboutMe.err.enSkills": "Skills in English is required"
+    "aboutMe.err.enSkills": "Skills in English is required",
+    "createExperience": "Create job experience",
+    "createExperience.title": "Job title",
+    "createExperience.resume": "Resume of the job",
+    "createExperience.startDate": "Start date",
+    "createExperience.endDate": "End date",
+    "createExperience.project": "Project work",
+    "createExperience.skills": "Skills",
+    "createExperience.urlToProject": "The link of the project",
+    "createExperience.currentWork": "Current job",
+    "save": "Save",
+    "cancel": "Cancel",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "deleteRecord": "Do you want to delete this record?",
+    "genericList.notElement": "There is not element to show"
 }

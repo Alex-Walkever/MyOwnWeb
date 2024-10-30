@@ -1,0 +1,15 @@
+.english-container{
+   margin-left: 10px;
+}
+
+.spanish-container{
+    position: sticky;
+    left: 380px;
+    top: 140px;
+    margin-left: 10px;
+}
+
+mat-form-field{
+    margin-right: 4rem;
+    margin-bottom: 1rem;
+}

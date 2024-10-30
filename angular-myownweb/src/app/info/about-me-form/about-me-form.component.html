@@ -1,1 +1,76 @@
-<p>about-me-form works!</p>
+<form (submit)="saveChanges()" [formGroup]="form">
+    <div class="english-container">{{'changeLanguage.en'| translate}}</div>
+    <div class="spanish-container">{{'changeLanguage.es'| translate}}</div>
+
+    <mat-form-field appearance="outline">
+        <mat-label>{{'createExperience.title'| translate}}</mat-label>
+        <input matInput [formControl]="form.controls.enTitle" />
+        <mat-error>{{getErrorTitle()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>{{'createExperience.title'| translate}}</mat-label>
+        <input matInput [formControl]="form.controls.esTitle" />
+    </mat-form-field>
+    
+    <div></div>
+    <mat-form-field appearance="outline">
+        <mat-label>{{'createExperience.resume'| translate}}</mat-label>
+        <input matInput [formControl]="form.controls.enResume" />
+        <mat-error>{{getErrorResume()}}</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+        <mat-label>{{'createExperience.resume'| translate}}</mat-label>
+        <input matInput [formControl]="form.controls.esResume" />
+    </mat-form-field>
+
+    <div></div>
+    <mat-form-field appearance="outline">
+        <mat-label>{{'createExperience.project'| translate}}</mat-label>
+        <input matInput [formControl]="form.controls.enProject" />
+        <mat-error>{{getErrorProject()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>{{'createExperience.project'| translate}}</mat-label>
+        <input matInput [formControl]="form.controls.esProject" />
+    </mat-form-field>
+
+    <div></div>
+    <mat-form-field appearance="outline">
+        <mat-label>{{'createExperience.skills'| translate}}</mat-label>
+        <input matInput [formControl]="form.controls.enSkills" />
+        <mat-error>{{getErrorSkills()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>{{'createExperience.skills'| translate}}</mat-label>
+        <input matInput [formControl]="form.controls.esSkills" />
+    </mat-form-field>
+
+    <div></div>
+    <mat-form-field  appearance="outline">
+        <mat-label>{{'createExperience.startDate' | translate}}</mat-label>
+        <input matInput [matDatepicker]="picker" [max]="today" [formControl]="form.controls.startDate"/>
+        <mat-datepicker #picker startView="multi-year"
+        (monthSelected)="setMonthAndYearStart($event, picker)"
+        panelClass="AboutMeFormComponent"></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-error>{{getErrorStartDate()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline">
+        <mat-label>{{'createExperience.endDate' | translate}}</mat-label>
+        <input matInput [matDatepicker]="picker" [max]="today" [formControl]="form.controls.endDate"/>
+        <mat-datepicker #picker startView="multi-year"
+        (monthSelected)="setMonthAndYearEnd($event, picker)"
+        panelClass="AboutMeFormComponent"></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    </mat-form-field>
+
+    <div class="container-Buttons">
+        <button type="submit" mat-flat-button [disabled]="form.invalid">{{"save" | translate}}</button>
+        <a mat-stroked-button routerLink="/actores">{{"cancel" | translate}}</a>
+    </div>
+</form>

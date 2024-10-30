@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
       interations: 1
     }, {
       htmlElement: <HTMLElement>document.querySelector(".container"),
-      transalteYStrat: "-15%",
+      transalteYStrat: "-5%",
       transalteYEnd: "0",
       duration: 1000,
       interations: 1
@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
     }, {
       htmlElement: this.animatedShow[1].htmlElement,
       transalteYStrat: "0",
-      transalteYEnd: "-15%",
+      transalteYEnd: "-5%",
       duration: 1000,
       interations: 1
     }];

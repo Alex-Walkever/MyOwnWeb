@@ -1,18 +1,18 @@
-import { Component, inject } from '@angular/core';
-import { getTranslation } from '../../tools/utility-functions';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { IndexEntityComponent } from "../../tools/index-entity/index-entity.component";
+import { UrlStrings } from '../../tools/utility-strings';
+import { SERVICE_CRUD_INJECTION_TOKEN } from '../../tools/utility-variables';
+import { ExperienceService } from '../experience.service';
 
 @Component({
   selector: 'app-about-me',
   standalone: true,
-  imports: [TranslateModule],
+  imports: [TranslateModule, IndexEntityComponent],
   templateUrl: './about-me.component.html',
-  styleUrl: './about-me.component.css'
+  styleUrl: './about-me.component.css',
+  providers: [{ provide: SERVICE_CRUD_INJECTION_TOKEN, useClass: ExperienceService }]
 })
 export class AboutMeComponent {
-  test!:string;
-  translate = inject(TranslateService);
-  testString(str: string){
-    this.test = getTranslation(str, this.translate);
-  }
+  urlString = UrlStrings;
 }

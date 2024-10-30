@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ComponentRef, inject, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { SERVICE_CRUD_TOKEN } from '../providers/providers';
+import { SERVICE_CRUD_INJECTION_TOKEN } from '../utility-variables';
 import { IServiceCRUD } from '../interfaces/IServiceCRUD';
 import { extractErrors } from '../utility-functions';
 import { ShowErrorsComponent } from "../show-errors/show-errors.component";
@@ -31,7 +31,7 @@ export class CreateEntityComponent<TDTO, TCreationDTO> implements AfterViewInit 
 
   errors: string[] = [];
 
-  serviceCRUD = inject(SERVICE_CRUD_TOKEN) as IServiceCRUD<TDTO, TCreationDTO>;
+  serviceCRUD = inject(SERVICE_CRUD_INJECTION_TOKEN) as IServiceCRUD<TDTO, TCreationDTO>;
   private router = inject(Router);
 
   @ViewChild('containerForm', { read: ViewContainerRef })

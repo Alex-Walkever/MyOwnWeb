@@ -12,6 +12,7 @@ body{
 
 .lenguage-Buttons{
     position: fixed;
+    position: -webkit-fixed;
     bottom: 9px;
     right: 0;
 }
@@ -22,4 +23,13 @@ body{
 
 .lenguage-Buttons button {
     margin-right: 5px;
+}
+
+.container-Buttons {
+    margin-top: 1rem;
+}
+
+.dowArrow{
+    position: fixed;
+    z-index: 1000;
 }

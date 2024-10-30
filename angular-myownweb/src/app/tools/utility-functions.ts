@@ -1,6 +1,7 @@
 import { inject } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { LocalStorageStrings } from "./utility-strings";
+import { HttpParams } from "@angular/common/http";
 
 export function extractErrors(obj: any): string[] {
     const err = obj.error.errors;
@@ -61,4 +62,15 @@ export function globalAnimationShowAndHide(animation: AnimationShowAndHide[]) {
             element.htmlElement.style.transform = "translateY(" + element.transalteYEnd + ")";
         };
     }
+}
+
+export function buildQueryParams(obj: any): HttpParams{
+    let queryParams = new HttpParams();
+
+    for(let property in obj){
+        if(obj.hasOwnProperty(property)){
+            queryParams = queryParams.append(property, obj[property]);
+        }
+    }
+    return queryParams;
 }

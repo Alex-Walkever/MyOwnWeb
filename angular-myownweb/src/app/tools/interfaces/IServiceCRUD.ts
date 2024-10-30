@@ -7,5 +7,5 @@ export interface IServiceCRUD<TDTO, TCreationDTO> {
     getFromId(id: number): Observable<TDTO>;
     update(id: number, entidad: TCreationDTO): Observable<any>;
     create(entity: TCreationDTO): Observable<any>;
-    delete(id: number): Observable<any>;
+    remove(id: number): Observable<any>;
 }
