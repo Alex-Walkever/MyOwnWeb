@@ -28,6 +28,10 @@ body{
 .container-Buttons {
     margin-top: 1rem;
 }
+.container-Buttons button{
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
 
 .dowArrow{
     position: fixed;

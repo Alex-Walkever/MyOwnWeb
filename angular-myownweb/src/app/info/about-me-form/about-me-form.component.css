@@ -3,7 +3,7 @@
 }
 
 .spanish-container{
-    position: sticky;
+    position: fixed;
     left: 380px;
     top: 140px;
     margin-left: 10px;
@@ -13,3 +13,23 @@ mat-form-field{
     margin-right: 4rem;
     margin-bottom: 1rem;
 }
+
+.area-form-big, .area-form-small {
+    min-width: 150px;
+    max-width: 300px;
+    width: 100%;
+}
+.area-form-big, .area-form-big textarea {
+    min-height: 150px;
+    max-height: 200px;
+    height: 100%;
+}
+
+textarea{
+    resize: none;
+}
+
+.tab-icon {
+    margin-right: 8px;
+    margin-bottom: 9px;
+  }

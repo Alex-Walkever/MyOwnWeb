@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { afterNextRender, Component, EventEmitter, inject, Injector, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,12 +9,15 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { getTranslation } from '../../tools/utility-functions';
 import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
 import { Moment } from 'moment';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-about-me-form',
   standalone: true,
-  imports: [MatButtonModule, RouterLink, MatFormFieldModule, ReactiveFormsModule, MatInputModule, TranslateModule, MatDatepickerModule],
+  imports: [MatButtonModule, RouterLink, MatFormFieldModule, ReactiveFormsModule, MatInputModule, TranslateModule, 
+    MatDatepickerModule, MatTabsModule, MatDividerModule, MatIconModule],
   templateUrl: './about-me-form.component.html',
   styleUrl: './about-me-form.component.css'
 })
@@ -33,7 +36,6 @@ export class AboutMeFormComponent implements OnInit {
 
   private formbuilder = inject(FormBuilder);
   private translate = inject(TranslateService);
-
   today = new Date();
 
   form = this.formbuilder.group({
@@ -153,5 +155,9 @@ export class AboutMeFormComponent implements OnInit {
     });
     datepicker.close();
   }
+}
+
+function ViewChild(arg0: string): (target: AboutMeFormComponent, propertyKey: "autosize") => void {
+  throw new Error('Function not implemented.');
 }
 

@@ -1,72 +1,90 @@
 <form (submit)="saveChanges()" [formGroup]="form">
-    <div class="english-container">{{'changeLanguage.en'| translate}}</div>
-    <div class="spanish-container">{{'changeLanguage.es'| translate}}</div>
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">
+                    <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" />
+                </mat-icon>
+                <div>{{'changeLanguage.en'| translate}}</div>
+            </ng-template>
 
-    <mat-form-field appearance="outline">
-        <mat-label>{{'createExperience.title'| translate}}</mat-label>
-        <input matInput [formControl]="form.controls.enTitle" />
-        <mat-error>{{getErrorTitle()}}</mat-error>
-    </mat-form-field>
+            <mat-form-field class="area-form-small" style="margin-top: 10px;" appearance="outline">
+                <mat-label>{{'createExperience.title'| translate}}</mat-label>
+                <input matInput [formControl]="form.controls.enTitle" />
+                <mat-error>{{getErrorTitle()}}</mat-error>
+            </mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-label>{{'createExperience.title'| translate}}</mat-label>
-        <input matInput [formControl]="form.controls.esTitle" />
-    </mat-form-field>
-    
-    <div></div>
-    <mat-form-field appearance="outline">
-        <mat-label>{{'createExperience.resume'| translate}}</mat-label>
-        <input matInput [formControl]="form.controls.enResume" />
-        <mat-error>{{getErrorResume()}}</mat-error>
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline">
-        <mat-label>{{'createExperience.resume'| translate}}</mat-label>
-        <input matInput [formControl]="form.controls.esResume" />
-    </mat-form-field>
+            <div></div>
+            <mat-form-field class="area-form-big" appearance="outline">
+                <mat-label>{{'createExperience.resume'| translate}}</mat-label>
+                <textarea matInput [formControl]="form.controls.enResume"></textarea>
+                <mat-error>{{getErrorResume()}}</mat-error>
+            </mat-form-field>
 
-    <div></div>
-    <mat-form-field appearance="outline">
-        <mat-label>{{'createExperience.project'| translate}}</mat-label>
-        <input matInput [formControl]="form.controls.enProject" />
-        <mat-error>{{getErrorProject()}}</mat-error>
-    </mat-form-field>
+            <div></div>
+            <mat-form-field class="area-form-small" appearance="outline">
+                <mat-label>{{'createExperience.project'| translate}}</mat-label>
+                <textarea matInput [formControl]="form.controls.enProject"></textarea>
+                <mat-error>{{getErrorProject()}}</mat-error>
+            </mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-label>{{'createExperience.project'| translate}}</mat-label>
-        <input matInput [formControl]="form.controls.esProject" />
-    </mat-form-field>
+            <div></div>
+            <mat-form-field class="area-form-small" appearance="outline">
+                <mat-label>{{'createExperience.skills'| translate}}</mat-label>
+                <textarea matInput [formControl]="form.controls.enSkills"></textarea>
+                <mat-error>{{getErrorSkills()}}</mat-error>
+            </mat-form-field>
+        </mat-tab>
 
-    <div></div>
-    <mat-form-field appearance="outline">
-        <mat-label>{{'createExperience.skills'| translate}}</mat-label>
-        <input matInput [formControl]="form.controls.enSkills" />
-        <mat-error>{{getErrorSkills()}}</mat-error>
-    </mat-form-field>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">
+                    <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/MX.svg" />
+                </mat-icon>
+                <div>{{'changeLanguage.es'| translate}}</div>
+            </ng-template>
 
-    <mat-form-field appearance="outline">
-        <mat-label>{{'createExperience.skills'| translate}}</mat-label>
-        <input matInput [formControl]="form.controls.esSkills" />
-    </mat-form-field>
+            <mat-form-field class="area-form-small" appearance="outline">
+                <mat-label>{{'createExperience.title'| translate}}</mat-label>
+                <input matInput [formControl]="form.controls.esTitle" />
+            </mat-form-field>
 
-    <div></div>
-    <mat-form-field  appearance="outline">
+            <div></div>
+            <mat-form-field class="area-form-big" appearance="outline">
+                <mat-label>{{'createExperience.resume'| translate}}</mat-label>
+                <textarea matInput [formControl]="form.controls.esResume"></textarea>
+            </mat-form-field>
+
+            <div></div>
+            <mat-form-field class="area-form-small" appearance="outline">
+                <mat-label>{{'createExperience.project'| translate}}</mat-label>
+                <textarea matInput [formControl]="form.controls.esProject"></textarea>
+            </mat-form-field>
+
+            <div></div>
+            <mat-form-field class="area-form-small" appearance="outline">
+                <mat-label>{{'createExperience.skills'| translate}}</mat-label>
+                <textarea matInput [formControl]="form.controls.esSkills"></textarea>
+            </mat-form-field>
+        </mat-tab>
+    </mat-tab-group>
+
+    <div style="margin-top: 1rem;"></div>
+    <mat-form-field appearance="outline">
         <mat-label>{{'createExperience.startDate' | translate}}</mat-label>
-        <input matInput [matDatepicker]="picker" [max]="today" [formControl]="form.controls.startDate"/>
-        <mat-datepicker #picker startView="multi-year"
-        (monthSelected)="setMonthAndYearStart($event, picker)"
-        panelClass="AboutMeFormComponent"></mat-datepicker>
+        <input matInput [matDatepicker]="picker" [max]="today" [formControl]="form.controls.startDate" />
+        <mat-datepicker #picker startView="multi-year" (monthSelected)="setMonthAndYearStart($event, picker)"
+            panelClass="AboutMeFormComponent"></mat-datepicker>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-error>{{getErrorStartDate()}}</mat-error>
     </mat-form-field>
 
-    <mat-form-field  appearance="outline">
+    <mat-form-field appearance="outline">
         <mat-label>{{'createExperience.endDate' | translate}}</mat-label>
-        <input matInput [matDatepicker]="picker" [max]="today" [formControl]="form.controls.endDate"/>
-        <mat-datepicker #picker startView="multi-year"
-        (monthSelected)="setMonthAndYearEnd($event, picker)"
-        panelClass="AboutMeFormComponent"></mat-datepicker>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <input matInput [matDatepicker]="picker1" [max]="today" [formControl]="form.controls.endDate" />
+        <mat-datepicker #picker1 startView="multi-year" (monthSelected)="setMonthAndYearEnd($event, picker1)"
+            panelClass="AboutMeFormComponent"></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
     </mat-form-field>
 
     <div class="container-Buttons">
