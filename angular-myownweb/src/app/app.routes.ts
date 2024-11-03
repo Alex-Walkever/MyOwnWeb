@@ -5,12 +5,14 @@ import { ShowTranslateStringsComponent } from './ui/pages/show-translate-strings
 import { MainPageComponent } from './ui/pages/main-page/main-page.component';
 import { AboutMeComponent } from './ui/pages/about-me-page/about-me/about-me.component';
 import { CreateExperienceComponent } from './ui/pages/about-me-page/create-experience/create-experience.component';
+import { EditExperienceComponent } from './ui/pages/about-me-page/edit-experience/edit-experience.component';
 
 export const routes: Routes = [
     { path: UrlStrings.urlHome, component: MainPageComponent },
 
     { path: UrlStrings.urlAboutMe, component: AboutMeComponent },
     { path: UrlStrings.urlCreateExperience, component: CreateExperienceComponent},
+    {path: UrlStrings.urlEditExperience, component: EditExperienceComponent},
 
     {path: UrlStrings.urlShowTranslateStrings, component: ShowTranslateStringsComponent},
 

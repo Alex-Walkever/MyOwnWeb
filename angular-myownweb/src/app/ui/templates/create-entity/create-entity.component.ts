@@ -28,7 +28,7 @@ export class CreateEntityComponent<TDTO, TCreationDTO> implements AfterViewInit 
 
   @Input({ required: true })
   form: any;
-
+  
   errors: string[] = [];
 
   serviceCRUD = inject(SERVICE_CRUD_INJECTION_TOKEN) as IServiceCRUD<TDTO, TCreationDTO>;

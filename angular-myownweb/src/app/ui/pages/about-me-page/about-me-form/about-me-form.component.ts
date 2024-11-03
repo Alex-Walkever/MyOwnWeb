@@ -12,6 +12,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { ExperienceCreationDTO, ExperienceDTO } from '../../../../api/dtos/experience-dtos';
 import { getTranslation } from '../../../../util/utility-functions';
+import { UrlStrings } from '../../../../util/utility-strings';
 
 @Component({
   selector: 'app-about-me-form',
@@ -37,6 +38,7 @@ export class AboutMeFormComponent implements OnInit {
   private formbuilder = inject(FormBuilder);
   private translate = inject(TranslateService);
   today = new Date();
+  urlStrings = UrlStrings;
 
   form = this.formbuilder.group({
     enTitle: ['', { validators: [Validators.required] }],
@@ -54,7 +56,6 @@ export class AboutMeFormComponent implements OnInit {
     urlToProject: new FormControl<string | null>(null),
     currentWork: new FormControl<boolean>(false)
   })
-
 
   getErrorTitle(): string {
     let enTitle = this.form.controls.enTitle;
@@ -155,9 +156,5 @@ export class AboutMeFormComponent implements OnInit {
     });
     datepicker.close();
   }
-}
-
-function ViewChild(arg0: string): (target: AboutMeFormComponent, propertyKey: "autosize") => void {
-  throw new Error('Function not implemented.');
 }
 

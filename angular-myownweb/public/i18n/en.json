@@ -20,6 +20,7 @@
     "createExperience.skills": "Skills",
     "createExperience.urlToProject": "The link of the project",
     "createExperience.currentWork": "Current job",
+    "editExperience": "Edit this job experience: {{param}}",
     "save": "Save",
     "cancel": "Cancel",
     "actions": "Actions",

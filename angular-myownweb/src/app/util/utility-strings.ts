@@ -2,6 +2,7 @@ export class UrlStrings {
   static urlHome = '';
   static urlAboutMe = 'aboutme';
   static urlCreateExperience = this.urlAboutMe+'/create-experience';
+  static urlEditExperience = this.urlAboutMe+'/edit-experience/:id';
   static urlNoPageFound = 'page-no-found';
   static urlShowTranslateStrings = 'show-transalte-strings';
 }

@@ -1,4 +1,3 @@
-
-/MyOwnWeb/bin
-/MyOwnWeb/obj
-/MyOwnWeb/.vs
+/MyOwnWebAPI/obj
+/MyOwnWebAPI/bin
+/MyOwnWebAPI/.vs

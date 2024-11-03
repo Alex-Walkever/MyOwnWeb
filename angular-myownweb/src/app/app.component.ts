@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   constructor() {
     var lang = localStorage.getItem("lang");
     if (lang) {
-      this.translateService.use(lang!.toString());
+      this.translateText(lang!.toString());
     }
   }
 
