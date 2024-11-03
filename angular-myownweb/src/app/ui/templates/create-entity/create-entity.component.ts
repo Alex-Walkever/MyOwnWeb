@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, ComponentRef, inject, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { SERVICE_CRUD_INJECTION_TOKEN } from '../utility-variables';
-import { IServiceCRUD } from '../interfaces/IServiceCRUD';
-import { extractErrors } from '../utility-functions';
-import { ShowErrorsComponent } from "../show-errors/show-errors.component";
+import { SERVICE_CRUD_INJECTION_TOKEN } from '../../../util/utility-variables';
+import { ShowErrorsComponent } from "../../features/show-errors/show-errors.component";
+import { IServiceCRUD } from '../../../lib/interfaces/IServiceCRUD';
+import { extractErrors } from '../../../util/utility-functions';
 
 @Component({
   selector: 'app-create-entity',

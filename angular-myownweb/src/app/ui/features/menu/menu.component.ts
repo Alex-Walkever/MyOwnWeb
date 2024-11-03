@@ -4,9 +4,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { UrlStrings } from '../../tools/utility-strings';
+import { UrlStrings } from '../../../util/utility-strings';
 import { CommonModule } from '@angular/common';
-import { AnimationShowAndHide, globalAnimationShowAndHide } from '../../tools/utility-functions';
+import { AnimationShowAndHide, globalAnimationShowAndHide } from '../../../util/utility-functions';
 
 @Component({
   selector: 'app-menu',

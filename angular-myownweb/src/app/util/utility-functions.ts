@@ -1,6 +1,4 @@
-import { inject } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
-import { LocalStorageStrings } from "./utility-strings";
 import { HttpParams } from "@angular/common/http";
 
 export function extractErrors(obj: any): string[] {

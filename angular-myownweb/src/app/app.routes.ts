@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { MainPageComponent } from './main-page/main-page/main-page.component';
-import { NoPageComponent } from './tools/no-page/no-page.component';
-import { AboutMeComponent } from './info/about-me/about-me.component';
-import { UrlStrings } from './tools/utility-strings';
-import { ShowTranslateStringsComponent } from './tools/show-translate-strings/show-translate-strings.component';
-import { CreateExperienceComponent } from './info/create-experience/create-experience.component';
+import { NoPageComponent } from './ui/pages/no-page/no-page.component';
+import { UrlStrings } from './util/utility-strings';
+import { ShowTranslateStringsComponent } from './ui/pages/show-translate-strings-page/show-translate-strings.component';
+import { MainPageComponent } from './ui/pages/main-page/main-page.component';
+import { AboutMeComponent } from './ui/pages/about-me-page/about-me/about-me.component';
+import { CreateExperienceComponent } from './ui/pages/about-me-page/create-experience/create-experience.component';
 
 export const routes: Routes = [
     { path: UrlStrings.urlHome, component: MainPageComponent },

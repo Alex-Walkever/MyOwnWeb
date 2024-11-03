@@ -1,6 +1,6 @@
 import { HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { PaginationDTO } from "../models/paginationDTO"
+import { PaginationDTO } from "../../api/dtos/paginationDTO";
 
 export interface IServiceCRUD<TDTO, TCreationDTO> {
     getPagination(pagination: PaginationDTO): Observable<HttpResponse<TDTO[]>>;

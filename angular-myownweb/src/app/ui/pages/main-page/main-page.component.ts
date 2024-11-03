@@ -1,8 +1,5 @@
 import { Component, inject } from '@angular/core';
 
-
-
-
 @Component({
   selector: 'app-main-page',
   standalone: true,

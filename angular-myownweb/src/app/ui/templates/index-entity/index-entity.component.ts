@@ -1,7 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
-import { SERVICE_CRUD_INJECTION_TOKEN, PageSizeOptions } from '../utility-variables';
-import { IServiceCRUD } from '../interfaces/IServiceCRUD';
-import { PaginationDTO } from '../models/paginationDTO';
+import { SERVICE_CRUD_INJECTION_TOKEN, PageSizeOptions } from '../../../util/utility-variables';
+import { PaginationDTO } from '../../../api/dtos/paginationDTO';
 import { HttpResponse } from '@angular/common/http';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { TranslateModule } from '@ngx-translate/core';
@@ -10,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { GenericListComponent } from '../generic-list/generic-list.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2'
+import { IServiceCRUD } from '../../../lib/interfaces/IServiceCRUD';
 
 @Component({
   selector: 'app-index-entity',

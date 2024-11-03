@@ -1,12 +1,12 @@
 import { inject, Injectable } from '@angular/core';
-import { IServiceCRUD } from '../tools/interfaces/IServiceCRUD';
-import { ExperienceCreationDTO, ExperienceDTO } from './info';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { environment } from '../../environments/environment';
-import { UrlStrings } from '../tools/utility-strings';
-import { buildQueryParams } from '../tools/utility-functions';
-import { PaginationDTO } from '../tools/models/paginationDTO';
+import { IServiceCRUD } from '../../lib/interfaces/IServiceCRUD';
+import { ExperienceCreationDTO, ExperienceDTO } from '../dtos/experience-dtos';
+import { environment } from '../../../environments/environment';
+import { UrlStrings } from '../../util/utility-strings';
+import { PaginationDTO } from '../dtos/paginationDTO';
+import { buildQueryParams } from '../../util/utility-functions';
 
 @Injectable({
   providedIn: 'root'

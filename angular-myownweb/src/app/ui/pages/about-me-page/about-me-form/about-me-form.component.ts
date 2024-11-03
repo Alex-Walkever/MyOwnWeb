@@ -4,14 +4,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
-import { ExperienceCreationDTO, ExperienceDTO } from '../info';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { getTranslation } from '../../tools/utility-functions';
 import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
 import { Moment } from 'moment';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { ExperienceCreationDTO, ExperienceDTO } from '../../../../api/dtos/experience-dtos';
+import { getTranslation } from '../../../../util/utility-functions';
 
 @Component({
   selector: 'app-about-me-form',

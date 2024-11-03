@@ -2,10 +2,10 @@ import { Component, inject, input, OnInit, ViewChild } from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { Router, RouterOutlet } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { MenuComponent } from "./menu/menu/menu.component";
+import { MenuComponent } from "./ui/features/menu/menu.component";
 import { BehaviorSubject, debounceTime, timer } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
-import { globalAnimationShowAndHide, AnimationShowAndHide } from './tools/utility-functions';
+import { AnimationShowAndHide, globalAnimationShowAndHide } from './util/utility-functions';
 
 @Component({
   selector: 'app-root',

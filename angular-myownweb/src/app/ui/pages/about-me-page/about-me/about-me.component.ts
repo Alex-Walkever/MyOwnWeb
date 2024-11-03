@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { IndexEntityComponent } from "../../tools/index-entity/index-entity.component";
-import { UrlStrings } from '../../tools/utility-strings';
-import { SERVICE_CRUD_INJECTION_TOKEN } from '../../tools/utility-variables';
-import { ExperienceService } from '../experience.service';
+import { IndexEntityComponent } from '../../../templates/index-entity/index-entity.component';
+import { SERVICE_CRUD_INJECTION_TOKEN } from '../../../../util/utility-variables';
+import { ExperienceService } from '../../../../api/services/experience.service';
+import { UrlStrings } from '../../../../util/utility-strings';
 
 @Component({
   selector: 'app-about-me',
