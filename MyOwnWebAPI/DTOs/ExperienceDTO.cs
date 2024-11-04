@@ -1,8 +1,8 @@
 ﻿using MyOwnWeb.Interfaces;
 
-namespace MyOwnWeb.Entities
+namespace MyOwnWeb.DTOs
 {
-    public class Experience: IId
+    public class ExperienceDTO : IId
     {
         public int Id { get; set; }
         public required string EnTitle { get; set; }

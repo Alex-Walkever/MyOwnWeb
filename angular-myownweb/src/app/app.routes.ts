@@ -12,7 +12,7 @@ export const routes: Routes = [
 
     { path: UrlStrings.urlAboutMe, component: AboutMeComponent },
     { path: UrlStrings.urlCreateExperience, component: CreateExperienceComponent},
-    {path: UrlStrings.urlEditExperience, component: EditExperienceComponent},
+    {path: UrlStrings.urlEditExperience+'/:id', component: EditExperienceComponent},
 
     {path: UrlStrings.urlShowTranslateStrings, component: ShowTranslateStringsComponent},
 

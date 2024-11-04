@@ -20,6 +20,7 @@
     "createExperience.skills": "Habilidades",
     "createExperience.urlToProject": "Pagina web del proyecto",
     "createExperience.currentWork": "Trabajo actual",
+    "createExperience.companyName": "Nombre de la compania",
     "editExperience": "Editar esta experiencia laboral: {{param}}",
     "save": "Guardar",
     "cancel": "Cancelar",

@@ -1,16 +1,16 @@
 <h2>{{title}}</h2>
 
-<button mat-flat-button routerLink="{{urlCreate}}">{{'createExperience' | translate}}</button>
+<button style="margin-bottom: 1rem;" mat-flat-button routerLink="{{urlCreate}}">{{'createExperience' | translate}}</button>
 
 <app-generic-list [list]="entities">
     <ng-container contenido>
-        <table mat-table [dataSource]="entities" class="mat-elevation-z8 indice-elementos">
+        <table mat-table [dataSource]="entities" class="mat-elevation-z8 index-elements">
             @for (column of columnsToShow; track $index) {
                 @if(column == 'actions'){
                     <ng-container matColumnDef="actions">
                         <th mat-header-cell *matHeaderCellDef>{{'actions' | translate}}</th>
                         <td mat-cell *matCellDef="let element">
-                            <a routerLink="{{urlEdit + '/' + element.id}}" mat-flat-button>{{'edit' | translate}}</a>
+                            <a style="margin-right: 5px;" routerLink="{{urlEdit + '/' + element.id}}" mat-flat-button>{{'edit' | translate}}</a>
                             <button mat-flat-button color="warn" 
                             [swal]="{title: 'confirm' | translate, text: 'deleteRecord' | translate, showCancelButton: true}"
                             (confirm)="remove(element.id)"
@@ -20,7 +20,7 @@
                 } @else {
                     <ng-container matColumnDef="{{column}}">
                         <th mat-header-cell *matHeaderCellDef>{{firstCapitalLetter(column)}}</th>
-                        <td mat-cell *matCellDef="let element">{{element[column]}}</td>
+                        <td mat-cell *matCellDef="let element">{{transalteString(element[column], column)}}</td>
                     </ng-container>
                 }
             }

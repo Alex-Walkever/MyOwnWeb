@@ -15,7 +15,7 @@ export class ExperienceService implements IServiceCRUD<ExperienceDTO, Experience
 
   constructor() {}
   private http = inject(HttpClient);
-  private urlBase = environment.apiURL + '/' + UrlStrings.urlAboutMe;
+  private urlBase = environment.apiURL + '/' + UrlStrings.urlExperience;
 
   public getPagination(pagination: PaginationDTO): Observable<HttpResponse<ExperienceDTO[]>>{
     let queryParams = buildQueryParams(pagination);
@@ -23,17 +23,16 @@ export class ExperienceService implements IServiceCRUD<ExperienceDTO, Experience
   }
   
   public getFromId(id: number): Observable<ExperienceDTO>{
+    console.log(`${this.urlBase}/${id}`);
     return this.http.get<ExperienceDTO>(`${this.urlBase}/${id}`);
   }
 
-  public update(id: number, actor: ExperienceCreationDTO){
-    const formData = new FormData;
-    return this.http.put(`${this.urlBase}/${id}`, formData);
+  public update(id: number, experienceCreationDTO: ExperienceCreationDTO){
+    return this.http.put(`${this.urlBase}/${id}`, experienceCreationDTO);
   }
 
-  public create(actor: ExperienceCreationDTO){
-    const formData = new FormData;
-    return this.http.post(this.urlBase, formData);
+  public create(experienceCreationDTO: ExperienceCreationDTO){
+    return this.http.post(this.urlBase, experienceCreationDTO);
   }
 
   public remove(id: number){

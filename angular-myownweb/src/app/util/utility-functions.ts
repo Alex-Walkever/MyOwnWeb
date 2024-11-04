@@ -1,5 +1,6 @@
 import { TranslateService } from "@ngx-translate/core";
 import { HttpParams } from "@angular/common/http";
+import { LocalStorageStrings } from "./utility-strings";
 
 export function extractErrors(obj: any): string[] {
     const err = obj.error.errors;
@@ -72,3 +73,26 @@ export function buildQueryParams(obj: any): HttpParams{
     }
     return queryParams;
 }
+
+export function getYearMonthString(value: string): string{
+    return sliceDateDay(splitDateTime(value));
+}
+
+export function splitDateTime(value: string): string{
+    return value.split('T')[0];
+}
+
+export function sliceDateDay(value: string): string{
+    return value.slice(0, -3);
+}
+
+export function transalteString(value: string, column: string){
+    let rntValue = value;
+
+    if(column == 'enDate' || column == 'startDate')
+    {
+      rntValue = getYearMonthString(rntValue);
+    }
+
+    return rntValue;
+  }

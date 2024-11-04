@@ -6,6 +6,7 @@ import { MenuComponent } from "./ui/features/menu/menu.component";
 import { BehaviorSubject, debounceTime, timer } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { AnimationShowAndHide, globalAnimationShowAndHide } from './util/utility-functions';
+import { LocalStorageStrings } from './util/utility-strings';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
   router = inject(Router);
 
   constructor() {
-    var lang = localStorage.getItem("lang");
+    var lang = localStorage.getItem(LocalStorageStrings.language);
     if (lang) {
       this.translateText(lang!.toString());
     }
@@ -95,6 +96,6 @@ export class AppComponent implements OnInit {
   translateText(lang: string) {
     this.translateService.use(lang);
     this.translateService.setDefaultLang(lang);
-    localStorage.setItem("lang", lang);
+    localStorage.setItem(LocalStorageStrings.language, lang);
   }
 }

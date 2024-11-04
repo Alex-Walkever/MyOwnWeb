@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
 import { GenericListComponent } from '../generic-list/generic-list.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2'
 import { IServiceCRUD } from '../../../lib/interfaces/IServiceCRUD';
+import { getYearMonthString } from '../../../util/utility-functions';
 
 @Component({
   selector: 'app-index-entity',
@@ -28,42 +29,47 @@ export class IndexEntityComponent<TDTO, TCreationDTO> {
   @Input({ required: true })
   urlEdit!: string;
 
-  @Input()
-  columnsToShow = ['id', 'nombre', 'actions'];
+  @Input({ required: true })
+  columnsToShow: string[] = [];
+
+  @Input({ required: true })
+  transalteString!: Function;
 
   serviceCRUD = inject(SERVICE_CRUD_INJECTION_TOKEN) as IServiceCRUD<TDTO, TCreationDTO>;
 
-  pagination: PaginationDTO = {page: 1, recordsPerPage: 5};
+  pagination: PaginationDTO = { page: 1, recordsPerPage: 5 };
   entities!: TDTO[];
   totalAmoutOfRecords!: number;
   pageSize = PageSizeOptions;
 
-  constructor(){
+  constructor() {
     this.loadRecords();
   }
 
-  loadRecords(){
-    this.serviceCRUD.getPagination(this.pagination).subscribe((response: HttpResponse<TDTO[]>)=> {
+  loadRecords() {
+    this.serviceCRUD.getPagination(this.pagination).subscribe((response: HttpResponse<TDTO[]>) => {
       this.entities = response.body as TDTO[];
       const header = response.headers.get("total-amount-of-records") as string;
       this.totalAmoutOfRecords = parseInt(header, 10);
     })
   }
 
-  updatePagination(data: PageEvent){
-    this.pagination = {page: data.pageIndex + 1, recordsPerPage: data.pageSize};
+  updatePagination(data: PageEvent) {
+    this.pagination = { page: data.pageIndex + 1, recordsPerPage: data.pageSize };
     this.loadRecords();
   }
 
-  remove(id: number){
+  remove(id: number) {
     this.serviceCRUD.remove(id).subscribe(() => {
       this.pagination.page = 1;
       this.loadRecords();
     })
   }
 
-  firstCapitalLetter(value: string){
-    if(!value) return value;
+  firstCapitalLetter(value: string) {
+    if (!value) return value;
+
     return value.charAt(0).toUpperCase() + value.slice(1);
   }
+
 }

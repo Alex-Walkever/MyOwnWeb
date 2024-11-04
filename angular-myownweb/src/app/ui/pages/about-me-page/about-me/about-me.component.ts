@@ -4,6 +4,7 @@ import { IndexEntityComponent } from '../../../templates/index-entity/index-enti
 import { SERVICE_CRUD_INJECTION_TOKEN } from '../../../../util/utility-variables';
 import { ExperienceService } from '../../../../api/services/experience.service';
 import { UrlStrings } from '../../../../util/utility-strings';
+import { getYearMonthString, transalteString } from '../../../../util/utility-functions';
 
 @Component({
   selector: 'app-about-me',
@@ -15,4 +16,8 @@ import { UrlStrings } from '../../../../util/utility-strings';
 })
 export class AboutMeComponent {
   urlString = UrlStrings;
+  columnsToShow = ['id', 'enTitle', 'companyName', 'startDate', 'actions'];
+  transalteString: Function = (value: string, column: string) => {
+    return transalteString(value, column);
+  }
 }

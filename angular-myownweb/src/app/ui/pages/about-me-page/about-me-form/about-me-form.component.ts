@@ -1,4 +1,4 @@
-import { afterNextRender, Component, EventEmitter, inject, Injector, Input, OnInit, Output } from '@angular/core';
+import { afterNextRender, Component, EventEmitter, inject, Injector, Input, model, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,12 +13,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { ExperienceCreationDTO, ExperienceDTO } from '../../../../api/dtos/experience-dtos';
 import { getTranslation } from '../../../../util/utility-functions';
 import { UrlStrings } from '../../../../util/utility-strings';
+import { MatRadioButton } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-about-me-form',
   standalone: true,
   imports: [MatButtonModule, RouterLink, MatFormFieldModule, ReactiveFormsModule, MatInputModule, TranslateModule, 
-    MatDatepickerModule, MatTabsModule, MatDividerModule, MatIconModule],
+    MatDatepickerModule, MatTabsModule, MatDividerModule, MatIconModule, MatCheckboxModule],
   templateUrl: './about-me-form.component.html',
   styleUrl: './about-me-form.component.css'
 })
@@ -37,7 +39,9 @@ export class AboutMeFormComponent implements OnInit {
 
   private formbuilder = inject(FormBuilder);
   private translate = inject(TranslateService);
+  private oldEndDate!: Date;
   today = new Date();
+
   urlStrings = UrlStrings;
 
   form = this.formbuilder.group({
@@ -45,6 +49,7 @@ export class AboutMeFormComponent implements OnInit {
     esTitle: new FormControl<string | null>(null),
     enResume: ['', { validators: [Validators.required] }],
     esResume: new FormControl<string | null>(null),
+    companyName: new FormControl<string | null>(null),
     startDate: new FormControl<Date | null>(null, {
       validators: [Validators.required]
     }),
@@ -56,6 +61,21 @@ export class AboutMeFormComponent implements OnInit {
     urlToProject: new FormControl<string | null>(null),
     currentWork: new FormControl<boolean>(false)
   })
+
+  disableEndDate($event: boolean){
+    if($event)
+    {
+      this.form.controls.endDate.disable();
+      
+      this.oldEndDate = this.form.get('endDate')?.getRawValue();
+      this.form.controls.endDate.setValue(null);
+    }
+    else
+    {
+      this.form.controls.endDate.enable();
+      this.form.controls.endDate.setValue(this.oldEndDate);
+    }
+  }
 
   getErrorTitle(): string {
     let enTitle = this.form.controls.enTitle;
@@ -109,9 +129,6 @@ export class AboutMeFormComponent implements OnInit {
     if (!this.form.valid) return;
 
     let experience = this.form.value as ExperienceCreationDTO;
-    if (experience.currentWork && experience.endDate) {
-      experience.endDate = new Date();
-    }
     this.postForm.emit(experience);
   }
 
@@ -119,20 +136,8 @@ export class AboutMeFormComponent implements OnInit {
     const ctrlValue = new Date();
     ctrlValue.setMonth(normalizedMonthAndYear.month());
     ctrlValue.setFullYear(normalizedMonthAndYear.year());
-    this.form.setValue({
-      startDate: ctrlValue,
-      enTitle: this.form.value.enTitle!,
-      esTitle: this.form.value.esTitle!,
-      enResume: this.form.value.enResume!,
-      esResume: this.form.value.esResume!,
-      endDate: this.form.value.endDate!,
-      enProject: this.form.value.enProject!,
-      esProject: this.form.value.esProject!,
-      enSkills: this.form.value.enSkills!,
-      esSkills: this.form.value.esSkills!,
-      urlToProject: this.form.value.urlToProject!,
-      currentWork: this.form.value.currentWork!
-    });
+
+    this.form.controls.startDate.setValue(ctrlValue);
     datepicker.close();
   }
 
@@ -140,20 +145,8 @@ export class AboutMeFormComponent implements OnInit {
     const ctrlValue = new Date();
     ctrlValue.setMonth(normalizedMonthAndYear.month());
     ctrlValue.setFullYear(normalizedMonthAndYear.year());
-    this.form.setValue({
-      endDate: ctrlValue,
-      enTitle: this.form.value.enTitle!,
-      esTitle: this.form.value.esTitle!,
-      enResume: this.form.value.enResume!,
-      esResume: this.form.value.esResume!,
-      startDate: this.form.value.startDate!,
-      enProject: this.form.value.enProject!,
-      esProject: this.form.value.esProject!,
-      enSkills: this.form.value.enSkills!,
-      esSkills: this.form.value.esSkills!,
-      urlToProject: this.form.value.urlToProject!,
-      currentWork: this.form.value.currentWork!
-    });
+
+    this.form.controls.endDate.setValue(ctrlValue);
     datepicker.close();
   }
 }
