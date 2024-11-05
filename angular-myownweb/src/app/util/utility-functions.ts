@@ -1,6 +1,7 @@
 import { TranslateService } from "@ngx-translate/core";
 import { HttpParams } from "@angular/common/http";
 import { LocalStorageStrings } from "./utility-strings";
+import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
 export function extractErrors(obj: any): string[] {
     const err = obj.error.errors;
@@ -95,4 +96,11 @@ export function transalteString(value: string, column: string){
     }
 
     return rntValue;
+  }
+
+  export function checkIfUserIsAlreadyPicked(): ValidatorFn{
+    return (control: AbstractControl): ValidationErrors | null => {
+        console.log("checkIfUserIsAlreadyPicked to do");
+        return null;
+    }
   }

@@ -1,0 +1,26 @@
+<form (submit)="saveChanges()" [formGroup]="form">
+    <h2 style="text-align: center;">{{title}}</h2>
+    <app-show-errors [errors]="errors"></app-show-errors>
+
+    <mat-form-field appearance="outline">
+        <mat-label>{{'authorization.email' | translate}}</mat-label>
+        <input matInput [formControl]="form.controls.email" />
+        <mat-error>{{getErrorEmail()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>{{'authorization.username' | translate}}</mat-label>
+        <input matInput [formControl]="form.controls.username" />
+        <mat-error>{{getErrorUsername()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>{{'authorization.password' | translate}}</mat-label>
+        <input matInput [formControl]="form.controls.password" />
+        <mat-error>{{getErrorPassword()}}</mat-error>
+    </mat-form-field>
+
+    <div>
+        <a class="container-Buttons" type="submit" mat-flat-button [disabled]="form.invalid">{{title}}</a>
+    </div>
+</form>

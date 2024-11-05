@@ -6,6 +6,8 @@ export class UrlStrings {
   static urlEditExperience = this.urlExperience+'/edit-experience';
   static urlNoPageFound = 'page-no-found';
   static urlShowTranslateStrings = 'show-transalte-strings';
+  static urlLogin = 'login';
+  static urlRegister = 'register';
 }
 
 export class LocalStorageStrings{
@@ -14,4 +16,8 @@ export class LocalStorageStrings{
 
 export class GlobalsEventsStrings{
   static changeLenguage = 'changeLenguage';
+}
+
+export class ErrorsStrings{
+  static usernamePicked = 'usernamePicked';
 }

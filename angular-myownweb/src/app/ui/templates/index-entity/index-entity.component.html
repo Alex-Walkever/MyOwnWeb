@@ -3,7 +3,7 @@
 <button style="margin-bottom: 1rem;" mat-flat-button routerLink="{{urlCreate}}">{{'createExperience' | translate}}</button>
 
 <app-generic-list [list]="entities">
-    <ng-container contenido>
+    <ng-container content>
         <table mat-table [dataSource]="entities" class="mat-elevation-z8 index-elements">
             @for (column of columnsToShow; track $index) {
                 @if(column == 'actions'){

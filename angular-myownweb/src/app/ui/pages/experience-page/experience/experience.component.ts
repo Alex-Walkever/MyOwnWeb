@@ -4,7 +4,7 @@ import { IndexEntityComponent } from '../../../templates/index-entity/index-enti
 import { SERVICE_CRUD_INJECTION_TOKEN } from '../../../../util/utility-variables';
 import { ExperienceService } from '../../../../api/services/experience.service';
 import { UrlStrings } from '../../../../util/utility-strings';
-import { getYearMonthString, transalteString } from '../../../../util/utility-functions';
+import { transalteString } from '../../../../util/utility-functions';
 
 @Component({
   selector: 'app-experience',

@@ -92,7 +92,7 @@ export class ExperienceFormComponent {
     let enTitle = this.form.controls.enTitle;
 
     if (enTitle.hasError('required')) {
-      return getTranslation("aboutMe.err.entitle", this.translate);
+      return getTranslation("experience.err.entitle", this.translate);
     }
 
     return "";
@@ -102,7 +102,7 @@ export class ExperienceFormComponent {
     let enResume = this.form.controls.enResume;
 
     if (enResume.hasError('required')) {
-      return getTranslation("aboutMe.err.enResume", this.translate);
+      return getTranslation("experience.err.enResume", this.translate);
     }
     return "";
   }
@@ -111,7 +111,7 @@ export class ExperienceFormComponent {
     let companyName = this.form.controls.companyName;
 
     if (companyName.hasError('required')) {
-      return getTranslation("aboutMe.err.companyName", this.translate);
+      return getTranslation("experience.err.companyName", this.translate);
     }
 
     return "";
@@ -121,7 +121,7 @@ export class ExperienceFormComponent {
     let startDate = this.form.controls.startDate;
 
     if (startDate.hasError('required')) {
-      return getTranslation("aboutMe.err.startDate", this.translate);
+      return getTranslation("experience.err.startDate", this.translate);
     }
 
     return "";
@@ -130,7 +130,7 @@ export class ExperienceFormComponent {
     let enProject = this.form.controls.enProject;
 
     if (enProject.hasError('required')) {
-      return getTranslation("aboutMe.err.enProject", this.translate);
+      return getTranslation("experience.err.enProject", this.translate);
     }
 
     return "";
@@ -140,7 +140,7 @@ export class ExperienceFormComponent {
     let enSkills = this.form.controls.enSkills;
 
     if (enSkills.hasError('required')) {
-      return getTranslation("aboutMe.err.enSkills", this.translate);
+      return getTranslation("experience.err.enSkills", this.translate);
     }
 
     return "";
