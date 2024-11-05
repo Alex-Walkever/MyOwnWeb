@@ -1,11 +1,12 @@
 import { Component, Input, numberAttribute } from '@angular/core';
-import { AboutMeFormComponent } from '../about-me-form/about-me-form.component';
+import { AboutMeFormComponent } from '../../about-me-page/about-me-form/about-me-form.component';
 import { UrlStrings } from '../../../../util/utility-strings';
 import { CreateEntityComponent } from "../../../templates/create-entity/create-entity.component";
 import { TranslateModule } from '@ngx-translate/core';
 import { SERVICE_CRUD_INJECTION_TOKEN } from '../../../../util/utility-variables';
 import { ExperienceService } from '../../../../api/services/experience.service';
 import { EditEntityComponent } from "../../../templates/edit-entity/edit-entity.component";
+import { ExperienceFormComponent } from '../experience-form/experience-form.component';
 
 @Component({
   selector: 'app-edit-experience',
@@ -22,6 +23,6 @@ export class EditExperienceComponent {
   @Input()
   experienceTitle!: string;
 
-  aboutMeForm = AboutMeFormComponent;
+  experienceForm = ExperienceFormComponent;
   urlStrings = UrlStrings;
 }

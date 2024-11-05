@@ -12,6 +12,7 @@
     "aboutMe.err.enProject": "Project in English is required",
     "aboutMe.err.enSkills": "Skills in English is required",
     "aboutMe.err.companyName": "Company name is required",
+    "experience": "Experience",
     "createExperience": "Create job experience",
     "createExperience.title": "Job title",
     "createExperience.resume": "Resume of the job",

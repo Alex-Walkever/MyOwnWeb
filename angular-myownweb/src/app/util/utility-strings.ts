@@ -2,8 +2,8 @@ export class UrlStrings {
   static urlHome = '';
   static urlAboutMe = 'aboutme';
   static urlExperience = 'experience'
-  static urlCreateExperience = this.urlAboutMe+'/create-experience';
-  static urlEditExperience = this.urlAboutMe+'/edit-experience';
+  static urlCreateExperience = this.urlExperience+'/create-experience';
+  static urlEditExperience = this.urlExperience+'/edit-experience';
   static urlNoPageFound = 'page-no-found';
   static urlShowTranslateStrings = 'show-transalte-strings';
 }
