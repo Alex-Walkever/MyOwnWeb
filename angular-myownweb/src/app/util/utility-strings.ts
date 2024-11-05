@@ -11,3 +11,7 @@ export class UrlStrings {
 export class LocalStorageStrings{
   static language = 'lang';
 }
+
+export class GlobalsEventsStrings{
+  static changeLenguage = 'changeLenguage';
+}

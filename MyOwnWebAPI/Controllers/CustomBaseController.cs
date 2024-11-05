@@ -67,6 +67,23 @@ namespace MyOwnWeb.Controllers
             return CreatedAtRoute(pathname, new { id = entity.Id }, entityDTO);
         }
 
+        protected async Task<IActionResult> Put<TCreationDTO, TEntity>(int id, TCreationDTO creationDTO)
+            where TEntity : class, IId
+        {
+            var entityExist = await context.Set<TEntity>().AnyAsync(x => x.Id == id);
+
+            if(entityExist is false) return NotFound();
+
+            var entity = mapper.Map<TEntity>(creationDTO);
+            entity.Id = id;
+
+            context.Update(entity);
+            await context.SaveChangesAsync();
+            await outputCacheStore.EvictByTagAsync(cacheTag, default);
+
+            return NoContent();
+        }
+
         protected async Task<IActionResult> Delete<TEntidad>(int id)
             where TEntidad : class, IId
         {

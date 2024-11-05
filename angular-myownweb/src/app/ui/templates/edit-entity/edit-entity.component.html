@@ -1,0 +1,9 @@
+<h2>{{title}}: {{subTitle}}</h2>
+
+<app-show-errors [errors]="errors"></app-show-errors>
+
+<ng-template #containerForm #getSubTitle></ng-template>
+
+@if (loading){
+    <app-loading></app-loading>
+}

@@ -1,5 +1,5 @@
-import { afterNextRender, Component, EventEmitter, inject, Injector, Input, model, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
+import { afterNextRender, Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -12,14 +12,14 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { ExperienceCreationDTO, ExperienceDTO } from '../../../../api/dtos/experience-dtos';
 import { getTranslation } from '../../../../util/utility-functions';
-import { UrlStrings } from '../../../../util/utility-strings';
-import { MatRadioButton } from '@angular/material/radio';
+import { GlobalsEventsStrings, LocalStorageStrings, UrlStrings } from '../../../../util/utility-strings';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NgxGlobalEventsService } from 'ngx-global-events';
 
 @Component({
   selector: 'app-about-me-form',
   standalone: true,
-  imports: [MatButtonModule, RouterLink, MatFormFieldModule, ReactiveFormsModule, MatInputModule, TranslateModule, 
+  imports: [MatButtonModule, RouterLink, MatFormFieldModule, ReactiveFormsModule, MatInputModule, TranslateModule,
     MatDatepickerModule, MatTabsModule, MatDividerModule, MatIconModule, MatCheckboxModule],
   templateUrl: './about-me-form.component.html',
   styleUrl: './about-me-form.component.css'
@@ -28,6 +28,10 @@ export class AboutMeFormComponent implements OnInit {
   ngOnInit(): void {
     if (this.model !== undefined) {
       this.form.patchValue(this.model);
+      this.setSubtitle();
+      this.globalEventsService.get(GlobalsEventsStrings.changeLenguage).subscribe(() =>{
+        this.setSubtitle();
+      })
     }
   }
 
@@ -37,8 +41,12 @@ export class AboutMeFormComponent implements OnInit {
   @Output()
   postForm = new EventEmitter<ExperienceCreationDTO>();
 
+  @Output()
+  editSubTitle = new EventEmitter<string | null>();
+
   private formbuilder = inject(FormBuilder);
   private translate = inject(TranslateService);
+  private globalEventsService = inject(NgxGlobalEventsService);
   private oldEndDate!: Date;
   today = new Date();
 
@@ -49,7 +57,9 @@ export class AboutMeFormComponent implements OnInit {
     esTitle: new FormControl<string | null>(null),
     enResume: ['', { validators: [Validators.required] }],
     esResume: new FormControl<string | null>(null),
-    companyName: new FormControl<string | null>(null),
+    companyName: new FormControl<string | null>(null, {
+      validators: [Validators.required]
+    }),
     startDate: new FormControl<Date | null>(null, {
       validators: [Validators.required]
     }),
@@ -62,16 +72,14 @@ export class AboutMeFormComponent implements OnInit {
     currentWork: new FormControl<boolean>(false)
   })
 
-  disableEndDate($event: boolean){
-    if($event)
-    {
+  disableEndDate($event: boolean) {
+    if ($event) {
       this.form.controls.endDate.disable();
-      
+
       this.oldEndDate = this.form.get('endDate')?.getRawValue();
       this.form.controls.endDate.setValue(null);
     }
-    else
-    {
+    else {
       this.form.controls.endDate.enable();
       this.form.controls.endDate.setValue(this.oldEndDate);
     }
@@ -93,6 +101,16 @@ export class AboutMeFormComponent implements OnInit {
     if (enResume.hasError('required')) {
       return getTranslation("aboutMe.err.enResume", this.translate);
     }
+    return "";
+  }
+
+  getErrorCompany(): string {
+    let companyName = this.form.controls.companyName;
+
+    if (companyName.hasError('required')) {
+      return getTranslation("aboutMe.err.companyName", this.translate);
+    }
+
     return "";
   }
 
@@ -130,6 +148,17 @@ export class AboutMeFormComponent implements OnInit {
 
     let experience = this.form.value as ExperienceCreationDTO;
     this.postForm.emit(experience);
+  }
+
+  setSubtitle() {
+    let rntValue: any;
+    let lang = localStorage.getItem(LocalStorageStrings.language);
+    if (lang == 'en' || this.form.controls.esTitle == null || this.form.controls.esTitle.getRawValue() == "") {
+      rntValue = this.form.controls.enTitle.getRawValue();
+    } else if (lang == 'es') {
+      rntValue = this.form.controls.esTitle.getRawValue();
+    }
+    this.editSubTitle.emit(rntValue);
   }
 
   setMonthAndYearStart(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {

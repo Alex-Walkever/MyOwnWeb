@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
+using Microsoft.EntityFrameworkCore;
 using MyOwnWeb.DTOs;
 using MyOwnWeb.Entities;
+using MyOwnWeb.Tools;
 
 namespace MyOwnWeb.Controllers
 {
@@ -27,7 +30,12 @@ namespace MyOwnWeb.Controllers
         [OutputCache(Tags = [cacheTag])]
         public async Task<List<ExperienceDTO>> Get([FromQuery] PaginationDTO pagination)
         {
-            return await Get<Experience, ExperienceDTO>(pagination, orderBy: g => g.StartDate); 
+            var quaryable = context.Set<Experience>().AsQueryable();
+            await HttpContext.InsertPaginationParametersInHeader(quaryable);
+            return await quaryable
+                .OrderByDescending(g => g.StartDate)
+                .Pagination(pagination)
+                .ProjectTo<ExperienceDTO>(mapper.ConfigurationProvider).ToListAsync();
         }
 
         [HttpGet("{id:int}", Name = "GetById")]
@@ -38,9 +46,15 @@ namespace MyOwnWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] ExperienceCreationDTO creationDTO)
+        public async Task<IActionResult> Post([FromBody] ExperienceCreationDTO experienceCreation)
         {
-            return await Post<ExperienceCreationDTO, Experience, ExperienceDTO>(creationDTO, "GetById");
+            return await Post<ExperienceCreationDTO, Experience, ExperienceDTO>(experienceCreation, "GetById");
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Put(int id, [FromBody] ExperienceCreationDTO experienceCreation)
+        {
+            return await Put<ExperienceCreationDTO, Experience>(id, experienceCreation);
         }
 
         [HttpDelete("{id:int}")]

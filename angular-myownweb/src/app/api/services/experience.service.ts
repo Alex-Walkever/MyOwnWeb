@@ -23,7 +23,6 @@ export class ExperienceService implements IServiceCRUD<ExperienceDTO, Experience
   }
   
   public getFromId(id: number): Observable<ExperienceDTO>{
-    console.log(`${this.urlBase}/${id}`);
     return this.http.get<ExperienceDTO>(`${this.urlBase}/${id}`);
   }
 

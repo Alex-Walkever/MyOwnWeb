@@ -6,7 +6,8 @@ import { MenuComponent } from "./ui/features/menu/menu.component";
 import { BehaviorSubject, debounceTime, timer } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { AnimationShowAndHide, globalAnimationShowAndHide } from './util/utility-functions';
-import { LocalStorageStrings } from './util/utility-strings';
+import { GlobalsEventsStrings, LocalStorageStrings } from './util/utility-strings';
+import { NgxGlobalEventsService } from 'ngx-global-events';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
   translateService = inject(TranslateService);
   matIconRegistry = inject(MatIconRegistry);
   router = inject(Router);
+  private globalEventsService = inject(NgxGlobalEventsService);
 
   constructor() {
     var lang = localStorage.getItem(LocalStorageStrings.language);
@@ -97,5 +99,6 @@ export class AppComponent implements OnInit {
     this.translateService.use(lang);
     this.translateService.setDefaultLang(lang);
     localStorage.setItem(LocalStorageStrings.language, lang);
+    this.globalEventsService.emit(GlobalsEventsStrings.changeLenguage);
   }
 }

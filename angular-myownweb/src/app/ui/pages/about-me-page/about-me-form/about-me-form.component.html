@@ -73,6 +73,7 @@
     <mat-form-field class="area-form-small" appearance="outline">
         <mat-label>{{'createExperience.companyName'| translate}}</mat-label>
         <textarea matInput [formControl]="form.controls.companyName"></textarea>
+        <mat-error>{{getErrorCompany()}}</mat-error>
     </mat-form-field>
 
     <div></div>
