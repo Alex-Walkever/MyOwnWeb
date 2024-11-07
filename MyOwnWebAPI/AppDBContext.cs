@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MyOwnWeb.Entities;
 
@@ -14,5 +15,6 @@ namespace MyOwnWeb
         }
 
         public DbSet<Experience> Experiences { get; set; }
+        public DbSet<AboutMeDescription> AboutMeDescriptions { get; set; }
     }
 }

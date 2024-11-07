@@ -81,7 +81,7 @@ export class SecurityService {
   }
 
   getRol(): string {
-    const admin = this.getJWTField('esadmin');
+    const admin = this.getJWTField('isadmin');
     if(admin){
       return 'admin';
     } else{

@@ -1,7 +1,10 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MyOwnWeb;
 using MyOwnWeb.Tools;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,39 @@ builder.Services.AddSingleton(provider => new MapperConfiguration(configuration 
 {
     configuration.AddProfile(new AutoMapperProfiles());
 }).CreateMapper());
+
+builder.Services.AddIdentityCore<IdentityUser>()
+    .AddEntityFrameworkStores<AppDBContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddAuthentication().AddJwtBearer(options =>
+{
+    options.MapInboundClaims = false;
+
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["jwtkey"]!)),
+        ClockSkew = TimeSpan.Zero
+    };
+});
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("isadmin", politic => politic.RequireClaim("isadmin"));
+});
+
+builder.Services.AddScoped<UserManager<IdentityUser>>();
+builder.Services.AddScoped<SignInManager<IdentityUser>>();
+
 
 var originalsPermitted = builder.Configuration.GetValue<string>("originalsPermitted")!.Split(",");
 

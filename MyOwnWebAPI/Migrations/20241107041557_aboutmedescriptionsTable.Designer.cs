@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyOwnWeb;
 
@@ -11,9 +12,11 @@ using MyOwnWeb;
 namespace MyOwnWeb.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241107041557_aboutmedescriptionsTable")]
+    partial class aboutmedescriptionsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -241,7 +244,7 @@ namespace MyOwnWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AboutMeDescriptions", (string)null);
+                    b.ToTable("AboutMeDescriptions");
                 });
 
             modelBuilder.Entity("MyOwnWeb.Entities.Experience", b =>
@@ -298,7 +301,7 @@ namespace MyOwnWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Experiences", (string)null);
+                    b.ToTable("Experiences");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

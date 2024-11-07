@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using MyOwnWeb.DTOs;
 using MyOwnWeb.Entities;
 
@@ -9,12 +10,18 @@ namespace MyOwnWeb.Tools
         public AutoMapperProfiles()
         {
             ConfigureExperienceMapping();
+            ConfigureUserMapping();
         }
 
         private void ConfigureExperienceMapping()
         {
             CreateMap<ExperienceCreationDTO, Experience>();
             CreateMap<Experience, ExperienceDTO>();
+        }
+
+        private void ConfigureUserMapping()
+        {
+            CreateMap<IdentityUser, UserDTO>();
         }
     }
 }
