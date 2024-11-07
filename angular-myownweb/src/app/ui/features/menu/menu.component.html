@@ -28,12 +28,16 @@
             {{'showStrings' | translate}}
         </a>
     </div>
-
-    <div>
+<app-authorization>
+        <ng-container authorized>
+            <span>{{"authorization.welcome" | translate}}, {{securityService.getJWTField('username')}}</span>
+            <a mat-button (click)="securityService.logout()">{{"authorization.logout" | translate}}</a>
+        </ng-container>
+        <ng-container noAuthorized>
         <a mat-button routerLink="{{[urlStrings.urlLogin]}}">
             <mat-icon>login</mat-icon>
             {{'authorization.login' | translate}}
         </a>
-    </div>
-
+    </ng-container>
+</app-authorization>
 </mat-toolbar>

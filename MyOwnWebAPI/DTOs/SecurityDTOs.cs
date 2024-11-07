@@ -41,4 +41,10 @@ namespace MyOwnWeb.DTOs
         [Required]
         public required string Password { get; set; }
     }
+
+    public class ClaimDTO
+    {
+        public required string ClaimType { get; set; }
+        public required string Username { get; set; }
+    }
 }

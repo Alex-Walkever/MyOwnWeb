@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { PaginationDTO } from '../dtos/paginationDTO';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { AuthorizationResponseDTO, UserCredentialsDTO, UserDTO } from '../dtos/authorization-dtos';
+import { AuthorizationResponseDTO, ClaimDTO, UserCredentialsDTO, UserCredentialsEmailDTO, UserCredentialsUsernameDTO, UserDTO } from '../dtos/authorization-dtos';
 import { Observable, tap } from 'rxjs';
 import { buildQueryParams } from '../../util/utility-functions';
 import { environment } from '../../../environments/environment';
@@ -14,21 +14,21 @@ export class SecurityService {
   constructor() { }
 
   private http = inject(HttpClient);
-  private urlBase = environment.apiURL + '/usuarios';
+  private urlBase = environment.apiURL + '/security';
   private readonly keyToken = 'token';
-  private readonly expirationKey = 'token-expiracion';
+  private readonly expirationKey = 'expiration-token';
 
   getPagination(pagination: PaginationDTO): Observable<HttpResponse<UserDTO[]>> {
     let queryParams = buildQueryParams(pagination);
-    return this.http.get<UserDTO[]>(`${this.urlBase}/ListadoUsuarios`, { params: queryParams, observe: 'response' });
+    return this.http.get<UserDTO[]>(`${this.urlBase}/userList`, { params: queryParams, observe: 'response' });
   }
 
-  makeAdmin(email: string) {
-    return this.http.post(`${this.urlBase}/HacerAdmin`, { email });
+  addClaim(claim: ClaimDTO) {
+    return this.http.post(`${this.urlBase}/addClaim`, claim);
   }
 
-  revokeAdmin(email: string) {
-    return this.http.post(`${this.urlBase}/RemoverAdmin`, { email });
+  removeClaim(claim: ClaimDTO) {
+    return this.http.post(`${this.urlBase}/removeClaim`, claim);
   }
 
   getToken(): string | null {
@@ -36,13 +36,23 @@ export class SecurityService {
   }
 
   register(credentials: UserCredentialsDTO): Observable<AuthorizationResponseDTO> {
-    return this.http.post<AuthorizationResponseDTO>(`${this.urlBase}/registrar`, credentials)
+    return this.http.post<AuthorizationResponseDTO>(`${this.urlBase}/register`, credentials)
       .pipe(tap(authorizationResponse => this.saveToken(authorizationResponse)));
   }
 
-  login(credenciales: UserCredentialsDTO): Observable<AuthorizationResponseDTO> {
-    return this.http.post<AuthorizationResponseDTO>(`${this.urlBase}/login`, credenciales)
+  loginUsername(credentials: UserCredentialsUsernameDTO): Observable<AuthorizationResponseDTO> {
+    return this.http.post<AuthorizationResponseDTO>(`${this.urlBase}/loginUsername`, credentials)
       .pipe(tap(authorizationResponse => this.saveToken(authorizationResponse)));
+  }
+
+  loginEmail(credentials: UserCredentialsEmailDTO): Observable<AuthorizationResponseDTO> {
+    console.log(credentials);
+    return this.http.post<AuthorizationResponseDTO>(`${this.urlBase}/loginEmail`, credentials)
+      .pipe(tap(authorizationResponse => this.saveToken(authorizationResponse)));
+  }
+
+  public remove(Username: string){
+    return this.http.delete(`${this.urlBase}`);
   }
 
   getJWTField(campo: string): string {
@@ -82,9 +92,9 @@ export class SecurityService {
 
   getRol(): string {
     const admin = this.getJWTField('isadmin');
-    if(admin){
+    if (admin) {
       return 'admin';
-    } else{
+    } else {
       return '';
     }
   }

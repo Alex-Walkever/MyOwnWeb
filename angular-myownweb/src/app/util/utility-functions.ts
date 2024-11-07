@@ -64,43 +64,57 @@ export function globalAnimationShowAndHide(animation: AnimationShowAndHide[]) {
     }
 }
 
-export function buildQueryParams(obj: any): HttpParams{
+export function buildQueryParams(obj: any): HttpParams {
     let queryParams = new HttpParams();
 
-    for(let property in obj){
-        if(obj.hasOwnProperty(property)){
+    for (let property in obj) {
+        if (obj.hasOwnProperty(property)) {
             queryParams = queryParams.append(property, obj[property]);
         }
     }
     return queryParams;
 }
 
-export function getYearMonthString(value: string): string{
+export function getYearMonthString(value: string): string {
     return sliceDateDay(splitDateTime(value));
 }
 
-export function splitDateTime(value: string): string{
+export function splitDateTime(value: string): string {
     return value.split('T')[0];
 }
 
-export function sliceDateDay(value: string): string{
+export function sliceDateDay(value: string): string {
     return value.slice(0, -3);
 }
 
-export function transalteString(value: string, column: string){
+export function transalteString(value: string, column: string) {
     let rntValue = value;
 
-    if(column == 'enDate' || column == 'startDate')
-    {
-      rntValue = getYearMonthString(rntValue);
+    if (column == 'enDate' || column == 'startDate') {
+        rntValue = getYearMonthString(rntValue);
     }
 
     return rntValue;
-  }
+}
 
-  export function checkIfUserIsAlreadyPicked(): ValidatorFn{
-    return (control: AbstractControl): ValidationErrors | null => {
-        console.log("checkIfUserIsAlreadyPicked to do");
-        return null;
+export function validateEmail(value: string): boolean {
+    var re = /\S+@\S+\.\S+/;
+    if (re.test(value)) {
+        return true;
     }
+
+    return false;
+}
+
+export function addTagToErrors(errors: string[], errorTag: string): string[]{
+    let rntErrors:string[] = [];
+
+    for (let i = 0; i < errors.length; i++) {
+      const element = errors[i];
+
+      let tranerror = errorTag + element;
+      rntErrors[i] = tranerror;
+    }
+
+    return rntErrors;
   }

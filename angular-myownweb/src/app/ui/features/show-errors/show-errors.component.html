@@ -1,5 +1,12 @@
 <ul>
+    @if(errorNeedToTranslate){
     @for (error of errors; track $index) {
-        <li>{{error}}</li>
+    <li>{{error | translate}}</li>
+    }
+    }
+    @else{
+    @for (error of errors; track $index) {
+    <li>{{error}}</li>
+    }
     }
 </ul>

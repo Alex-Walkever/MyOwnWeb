@@ -13,13 +13,13 @@ namespace MyOwnWeb.Tools
             return errores;
         }
 
-        public static IEnumerable<IdentityError> UserAlreadyTaken()
-        { 
-            return BuildError(new IdentityError() { Description = "userTaken" });
-        }
         public static IEnumerable<IdentityError> FailToLogin()
         {
             return BuildError(new IdentityError() { Description = "falseLogin" });
+        }
+        public static IEnumerable<IdentityError> ThisUserAlreadyClaim()
+        {
+            return BuildError(new IdentityError() { Description = "claimAlready" });
         }
     }
 }

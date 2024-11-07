@@ -1,18 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { SecurityService } from '../../../../api/services/security.service';
 import { Router, RouterLink } from '@angular/router';
-import { UserCredentialsDTO } from '../../../../api/dtos/authorization-dtos';
-import { extractErrorsEntity } from '../../../../util/utility-functions';
-import { AuthorizationFormComponent } from "../authorization-form/authorization-form.component";
+import {  UserCredentialsEmailDTO, UserCredentialsUsernameDTO } from '../../../../api/dtos/authorization-dtos';
+import { extractErrorsEntity, addTagToErrors } from '../../../../util/utility-functions';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { UrlStrings } from '../../../../util/utility-strings';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthorizationFormRegistrationComponent } from '../authorization-form-registration/authorization-form-registration.component';
+import { AuthorizationFormLoginComponent } from "../authorization-form-login/authorization-form-login.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [AuthorizationFormComponent, TranslateModule, MatGridListModule, RouterLink, MatButtonModule],
+  imports: [AuthorizationFormRegistrationComponent, TranslateModule, MatGridListModule, RouterLink, MatButtonModule, AuthorizationFormLoginComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -23,7 +24,7 @@ export class LoginComponent {
   breakpoint: number;
   urlStrings = UrlStrings;
 
-  constructor(){
+  constructor() {
     this.breakpoint = (window.innerWidth <= 1300) ? 1 : 2;
   }
 
@@ -31,14 +32,26 @@ export class LoginComponent {
     this.breakpoint = (event.target.innerWidth <= 1300) ? 1 : 2;
   }
 
-  login(credentials: UserCredentialsDTO) {
-    this.securityService.login(credentials).subscribe({
+  loginUsername(credentials: UserCredentialsUsernameDTO) {
+    this.securityService.loginUsername(credentials).subscribe({
       next: () => {
         this.router.navigate(['/']);
       },
       error: err => {
-        const errors = extractErrorsEntity(err);
-        this.errors = errors;
+        let errors = extractErrorsEntity(err);
+        this.errors = addTagToErrors(errors, "authorization.err.");
+      }
+    })
+  }
+
+  loginEmail(credentials: UserCredentialsEmailDTO) {
+    this.securityService.loginEmail(credentials).subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      },
+      error: err => {
+        let errors = extractErrorsEntity(err);
+        this.errors = addTagToErrors(errors, "authorization.err.");
       }
     })
   }

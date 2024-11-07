@@ -7,11 +7,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { UrlStrings } from '../../../util/utility-strings';
 import { CommonModule } from '@angular/common';
 import { AnimationShowAndHide, globalAnimationShowAndHide } from '../../../util/utility-functions';
+import { AuthorizationComponent } from '../../pages/authorization-page/authorization/authorization.component';
+import { SecurityService } from '../../../api/services/security.service';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [MatToolbarModule, TranslateModule, MatButtonModule, MatIconModule, RouterLink, CommonModule],
+  imports: [MatToolbarModule, TranslateModule, MatButtonModule, MatIconModule, RouterLink, CommonModule, AuthorizationComponent],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
@@ -35,7 +37,7 @@ export class MenuComponent implements OnInit{
 
   urlStrings = UrlStrings;
 
-  
+  securityService = inject(SecurityService);  
 
   animatedShow!: AnimationShowAndHide[];
   animatedHide!: AnimationShowAndHide[];

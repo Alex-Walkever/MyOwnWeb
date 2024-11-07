@@ -1,3 +1,4 @@
 <div class="auth-container">
-    <app-authorization-form class="form-container" [errors]="errors" title="{{'authorization.register' | translate}}"></app-authorization-form>
+    <app-authorization-form-registration class="form-container" [errors]="errors" title="{{'authorization.register' | translate}}"
+    (formPost)="saveChanges($event)"></app-authorization-form-registration>
 </div>

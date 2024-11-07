@@ -33,7 +33,7 @@ namespace MyOwnWeb.Controllers
             this.mapper = mapper;
         }
 
-        [HttpGet("UserList")]
+        [HttpGet("userList")]
         public async Task<ActionResult<List<UserDTO>>> UserList([FromQuery] PaginationDTO pagination)
         {
             var queryable = context.Users.AsQueryable();
@@ -44,7 +44,7 @@ namespace MyOwnWeb.Controllers
             return users;
         }
 
-        [HttpPost("Register")]
+        [HttpPost("register")]
         [AllowAnonymous]
         public async Task<ActionResult<AuthenticationResponseDTO>> Register(UserCredentialsDTO userCredentials)
         {
@@ -82,6 +82,38 @@ namespace MyOwnWeb.Controllers
             var user = await userManager.FindByNameAsync(userCredentials.Username);
 
             return await Login(user!, userCredentials.Password);
+        }
+
+        [HttpPost("addClaim")]
+        public async Task<IActionResult> AddClaim(ClaimDTO claimDTO)
+        {
+            var user = await userManager.FindByNameAsync(claimDTO.Username);
+
+            if(user is null) return NotFound();
+
+            var claims = await userManager.GetClaimsAsync(user);
+
+            foreach (Claim claim in claims)
+            {
+                if(claim.Type == claimDTO.ClaimType)
+                {
+                    return BadRequest(CustomErrorsMessages.ThisUserAlreadyClaim());
+                }
+            }
+
+            await userManager.AddClaimAsync(user, new Claim(claimDTO.ClaimType, "true"));
+            return NoContent();
+        }
+
+        [HttpPost("removeClaim")]
+        public async Task<IActionResult> RemoveClaim(ClaimDTO claimDTO)
+        {
+            var user = await userManager.FindByNameAsync(claimDTO.Username);
+
+            if (user is null) return NotFound();
+
+            await userManager.RemoveClaimAsync(user, new Claim(claimDTO.ClaimType, "true"));
+            return NoContent();
         }
 
         [HttpDelete]

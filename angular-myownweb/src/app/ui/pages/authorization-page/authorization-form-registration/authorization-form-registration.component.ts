@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { checkIfUserIsAlreadyPicked, getTranslation } from '../../../../util/utility-functions';
+import { getTranslation } from '../../../../util/utility-functions';
 import { UserCredentialsDTO } from '../../../../api/dtos/authorization-dtos';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ErrorsStrings, UrlStrings } from '../../../../util/utility-strings';
@@ -11,20 +11,20 @@ import { RouterLink } from '@angular/router';
 import { ShowErrorsComponent } from '../../../features/show-errors/show-errors.component';
 
 @Component({
-  selector: 'app-authorization-form',
+  selector: 'app-authorization-form-registration',
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink, MatFormFieldModule, MatButtonModule, MatInputModule, ShowErrorsComponent, TranslateModule],
-  templateUrl: './authorization-form.component.html',
-  styleUrl: './authorization-form.component.css'
+  templateUrl: './authorization-form-registration.component.html',
+  styleUrl: './authorization-form-registration.component.css'
 })
-export class AuthorizationFormComponent {
+export class AuthorizationFormRegistrationComponent {
   private formBuilder = inject(FormBuilder);
   private translate = inject(TranslateService);
   urlStrings = UrlStrings;
 
   form = this.formBuilder.group({
     email: ['', { validators: [Validators.required, Validators.email] }],
-    username: ['', { validators: [Validators.required, checkIfUserIsAlreadyPicked()] }],
+    username: ['', { validators: [Validators.required] }],
     password: ['', { validators: [Validators.required] }]
   })
 
