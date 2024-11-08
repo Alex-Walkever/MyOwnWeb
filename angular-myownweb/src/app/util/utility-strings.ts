@@ -8,6 +8,8 @@ export class UrlStrings {
   static urlShowTranslateStrings = 'show-transalte-strings';
   static urlLogin = 'login';
   static urlRegister = 'register';
+  static urlControlPanel = 'control-panel';
+  static urlUserControlPanel = 'user';
 }
 
 export class LocalStorageStrings{
@@ -20,4 +22,8 @@ export class GlobalsEventsStrings{
 
 export class ErrorsStrings{
   static usernamePicked = 'usernamePicked';
+}
+
+export class HeadersResponses{
+  static totalAmountOfRecords = "total-amount-of-records";
 }

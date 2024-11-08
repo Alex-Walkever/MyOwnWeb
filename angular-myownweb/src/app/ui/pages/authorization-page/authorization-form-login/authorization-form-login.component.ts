@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,11 +9,12 @@ import { UserCredentialsEmailDTO, UserCredentialsUsernameDTO } from '../../../..
 import { validateEmail } from '../../../../util/utility-functions';
 import { UrlStrings } from '../../../../util/utility-strings';
 import { ShowErrorsComponent } from '../../../features/show-errors/show-errors.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-authorization-form-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, MatFormFieldModule, MatButtonModule, MatInputModule, ShowErrorsComponent, TranslateModule],
+  imports: [ReactiveFormsModule, RouterLink, MatFormFieldModule, MatButtonModule, MatInputModule, ShowErrorsComponent, TranslateModule, MatIconModule],
   templateUrl: './authorization-form-login.component.html',
   styleUrl: './authorization-form-login.component.css'
 })
@@ -37,6 +38,13 @@ export class AuthorizationFormLoginComponent {
 
   @Output()
   emailLoginPost = new EventEmitter<UserCredentialsEmailDTO>();
+
+  hide = signal(true);
+  
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
+  }
 
   saveChanges(){
     if(!this.form.valid){

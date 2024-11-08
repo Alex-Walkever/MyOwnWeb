@@ -3,7 +3,6 @@ import { AuthorizationFormRegistrationComponent } from "../authorization-form-re
 import { SecurityService } from '../../../../api/services/security.service';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { UrlStrings } from '../../../../util/utility-strings';
 import { addTagToErrors, extractErrorsEntity } from '../../../../util/utility-functions';
 import { UserCredentialsDTO } from '../../../../api/dtos/authorization-dtos';
 import { ShowErrorsComponent } from "../../../features/show-errors/show-errors.component";
@@ -11,7 +10,7 @@ import { ShowErrorsComponent } from "../../../features/show-errors/show-errors.c
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [AuthorizationFormRegistrationComponent, TranslateModule, ShowErrorsComponent],
+  imports: [AuthorizationFormRegistrationComponent, TranslateModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -29,7 +28,7 @@ export class RegisterComponent {
       error: (err) => {
         let errors = extractErrorsEntity(err);
         this.errors = errors;
-        // addTagToErrors(errors, "authorization.err.");
+        addTagToErrors(errors, "authorization.err.");
       }
     })
   }

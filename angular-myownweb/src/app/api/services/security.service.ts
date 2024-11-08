@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { PaginationDTO } from '../dtos/paginationDTO';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { AuthorizationResponseDTO, ClaimDTO, UserCredentialsDTO, UserCredentialsEmailDTO, UserCredentialsUsernameDTO, UserDTO } from '../dtos/authorization-dtos';
 import { Observable, tap } from 'rxjs';
 import { buildQueryParams } from '../../util/utility-functions';
@@ -46,13 +46,14 @@ export class SecurityService {
   }
 
   loginEmail(credentials: UserCredentialsEmailDTO): Observable<AuthorizationResponseDTO> {
-    console.log(credentials);
     return this.http.post<AuthorizationResponseDTO>(`${this.urlBase}/loginEmail`, credentials)
       .pipe(tap(authorizationResponse => this.saveToken(authorizationResponse)));
   }
 
-  public remove(Username: string){
-    return this.http.delete(`${this.urlBase}`);
+  public remove(username: string){
+    let params = new HttpParams();
+    params = params.set('username', username);
+    return this.http.delete(`${this.urlBase}/`+username);
   }
 
   getJWTField(campo: string): string {

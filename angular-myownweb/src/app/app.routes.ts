@@ -9,6 +9,8 @@ import { EditExperienceComponent } from './ui/pages/experience-page/edit-experie
 import { ExperienceComponent } from './ui/pages/experience-page/experience/experience.component';
 import { LoginComponent } from './ui/pages/authorization-page/login/login.component';
 import { RegisterComponent } from './ui/pages/authorization-page/register/register.component';
+import { MainControlPanelComponent } from './ui/pages/control-panel-page/main-control-panel/main-control-panel.component';
+import { UserControlPanelComponent } from './ui/pages/control-panel-page/user-control-panel/user-control-panel.component';
 
 export const routes: Routes = [
     { path: UrlStrings.urlHome, component: MainPageComponent },
@@ -21,6 +23,9 @@ export const routes: Routes = [
 
     { path: UrlStrings.urlLogin, component: LoginComponent },
     { path: UrlStrings.urlRegister, component: RegisterComponent },
+
+    { path: UrlStrings.urlControlPanel, component: MainControlPanelComponent },
+    { path: UrlStrings.urlControlPanel+'/'+UrlStrings.urlUserControlPanel, component: UserControlPanelComponent },
 
     { path: UrlStrings.urlShowTranslateStrings, component: ShowTranslateStringsComponent },
 

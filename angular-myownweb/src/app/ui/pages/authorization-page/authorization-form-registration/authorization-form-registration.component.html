@@ -16,8 +16,17 @@
 
     <mat-form-field appearance="outline">
         <mat-label>{{'authorization.password' | translate}}</mat-label>
-        <input matInput [formControl]="form.controls.password" />
+        <input matInput [type]="hide() ? 'password' : 'text'" [formControl]="form.controls.password" />
         <mat-error>{{getErrorPassword()}}</mat-error>
+        <a
+      mat-icon-button
+      matSuffix
+      (click)="clickEvent($event)"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide()"
+    >
+    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </a>
     </mat-form-field>
 
     <div>

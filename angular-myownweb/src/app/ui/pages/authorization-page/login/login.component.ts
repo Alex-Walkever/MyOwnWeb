@@ -13,7 +13,7 @@ import { AuthorizationFormLoginComponent } from "../authorization-form-login/aut
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [AuthorizationFormRegistrationComponent, TranslateModule, MatGridListModule, RouterLink, MatButtonModule, AuthorizationFormLoginComponent],
+  imports: [TranslateModule, MatGridListModule, RouterLink, MatButtonModule, AuthorizationFormLoginComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

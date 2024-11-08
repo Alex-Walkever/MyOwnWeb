@@ -10,7 +10,8 @@ import { RouterLink } from '@angular/router';
 import { GenericListComponent } from '../generic-list/generic-list.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2'
 import { IServiceCRUD } from '../../../lib/interfaces/IServiceCRUD';
-import { getYearMonthString } from '../../../util/utility-functions';
+import { getHeaderString, getYearMonthString } from '../../../util/utility-functions';
+import { HeadersResponses } from '../../../util/utility-strings';
 
 @Component({
   selector: 'app-index-entity',
@@ -49,8 +50,7 @@ export class IndexEntityComponent<TDTO, TCreationDTO> {
   loadRecords() {
     this.serviceCRUD.getPagination(this.pagination).subscribe((response: HttpResponse<TDTO[]>) => {
       this.entities = response.body as TDTO[];
-      const header = response.headers.get("total-amount-of-records") as string;
-      this.totalAmoutOfRecords = parseInt(header, 10);
+      this.totalAmoutOfRecords = getHeaderString<TDTO[]>(response, HeadersResponses.totalAmountOfRecords);
     })
   }
 

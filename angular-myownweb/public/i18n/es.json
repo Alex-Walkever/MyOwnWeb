@@ -48,8 +48,17 @@
     "edit": "Editar",
     "delete": "Eliminar",
     "confirm": "Confirmación",
+    "modify": "Modificar",
     "deleteRecord": "¿Quieres eliminar este registro?",
     "genericList.notElement": "No hay ningún elemento que mostrar",
     "propierty": "Propiedad",
-    "value": "Valor"
+    "value": "Valor",
+    "controlPanel": "Panel de control",
+    "controlPanel.users": "Panel de control de usuarios",
+    "controlPanel.users.description": "Modifica los claim o elimina a un usuario",
+    "controlPanel.users.removed": "El usuario {{value}} fue eliminado con éxito",
+    "controlPanel.users.err.remove": "No puedes eliminar al mismo usuario",
+    "controlPanel.users.removePermision" : "¿Quieres eliminar el usuario {{value}}?",
+    "success": "Éxito",
+    "error": "Error"
 }

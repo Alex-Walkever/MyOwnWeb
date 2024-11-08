@@ -1,0 +1,32 @@
+<h2>{{"controlPanel" | translate}}</h2>
+
+<!-- <mat-grid-list [cols]="breakpoint" (window:resize)="onResize($event)"> -->
+    <app-authorization rol="admin">
+        <ng-container authorized>
+            <!-- <mat-grid-tile> -->
+                <mat-card class="card-container">
+                    <mat-card-header>
+                        <mat-card-title>
+                            {{"controlPanel.users" | translate}}
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            {{"controlPanel.users.description" | translate}}
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <a mat-button routerLink="{{[urlStrings.urlUserControlPanel]}}">
+                            <mat-icon>people</mat-icon>
+                            {{"modify" | translate}}
+                        </a>
+                    </mat-card-actions>
+            </mat-card>
+            <!-- </mat-grid-tile> -->
+        </ng-container>
+    </app-authorization>
+
+    <ng-container authorized>
+
+    </ng-container>
+<!-- </mat-grid-list> -->

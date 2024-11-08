@@ -116,7 +116,7 @@ namespace MyOwnWeb.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("{username}")]
         public async Task<IActionResult> Delete(string username)
         {
             var user = await userManager.FindByNameAsync(username);

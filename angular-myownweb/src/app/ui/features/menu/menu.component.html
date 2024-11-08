@@ -30,8 +30,13 @@
     </div>
 <app-authorization>
         <ng-container authorized>
-            <span>{{"authorization.welcome" | translate}}, {{securityService.getJWTField('username')}}</span>
-            <a mat-button (click)="securityService.logout()">{{"authorization.logout" | translate}}</a>
+            <a mat-button routerLink="{{[urlStrings.urlControlPanel]}}">
+                <mat-icon>accessibility</mat-icon>
+                {{"authorization.welcome" | translate}}, {{securityService.getJWTField('username')}}
+            </a>
+            <a mat-button (click)="securityService.logout()">{{"authorization.logout" | translate}}
+                <mat-icon>logout</mat-icon>
+            </a>
         </ng-container>
         <ng-container noAuthorized>
         <a mat-button routerLink="{{[urlStrings.urlLogin]}}">

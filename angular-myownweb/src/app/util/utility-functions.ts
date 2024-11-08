@@ -1,5 +1,5 @@
 import { TranslateService } from "@ngx-translate/core";
-import { HttpParams } from "@angular/common/http";
+import { HttpParams, HttpResponse } from "@angular/common/http";
 import { LocalStorageStrings } from "./utility-strings";
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
@@ -31,6 +31,14 @@ export function extractErrorsEntity(obj: any): string[] {
 export function getTranslation(str: string, translate: TranslateService): string {
     let returnString = '';
     translate.get(str).subscribe((res: string) => {
+        returnString = res;
+    });
+    return returnString;
+}
+
+export function getTranslationWithParams(str: string, value: string, translate: TranslateService): string {
+    let returnString = '';
+    translate.get(str, {value: value}).subscribe((res: string) => {
         returnString = res;
     });
     return returnString;
@@ -117,4 +125,9 @@ export function addTagToErrors(errors: string[], errorTag: string): string[]{
     }
 
     return rntErrors;
-  }
+}
+
+export function getHeaderString<TDTO>(response: HttpResponse<TDTO>, tag: string): number{
+    const header = response.headers.get(tag) as string;
+    return parseInt(header, 10);
+}
