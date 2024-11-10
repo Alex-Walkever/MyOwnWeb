@@ -16,7 +16,7 @@ export class AuthorizationComponent {
 
   isAuthorized(): boolean {
     if (this.rol) {
-      return this.securityService.getRol() === this.rol;
+      return this.securityService.getAdminRol() === this.rol;
     }
     else {
       return this.securityService.isLogin();

@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using MyOwnWeb.DTOs;
 using MyOwnWeb.Tools;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
@@ -15,7 +16,7 @@ namespace MyOwnWeb.Controllers
 {
     [Route("api/security")]
     [ApiController]
-    public class SecurityController: ControllerBase
+    public class SecurityController : ControllerBase
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
@@ -41,6 +42,16 @@ namespace MyOwnWeb.Controllers
             var users = await queryable.ProjectTo<UserDTO>(mapper.ConfigurationProvider)
                 .OrderBy(x => x.Email).Pagination(pagination).ToListAsync();
 
+            foreach(var userDTO in users)
+            {
+                var user = await userManager.FindByNameAsync(userDTO.Username);
+                if (user != null)
+                {
+                    var claims = await userManager.GetClaimsAsync(user);
+                    userDTO.Claims = new ClaimDTO() { ClaimType = ClaimsToArray(claims), Username = userDTO.Username };
+                }
+            }
+
             return users;
         }
 
@@ -56,7 +67,7 @@ namespace MyOwnWeb.Controllers
 
             var result = await userManager.CreateAsync(user, userCredentials.Password);
 
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 return await BuildToken(user);
             }
@@ -89,19 +100,21 @@ namespace MyOwnWeb.Controllers
         {
             var user = await userManager.FindByNameAsync(claimDTO.Username);
 
-            if(user is null) return NotFound();
+            if (user is null) return NotFound();
 
             var claims = await userManager.GetClaimsAsync(user);
 
-            foreach (Claim claim in claims)
+            var newClaims = CompareClaims(claimDTO.ClaimType, claims);
+
+            if (newClaims.Count == 0)
             {
-                if(claim.Type == claimDTO.ClaimType)
-                {
-                    return BadRequest(CustomErrorsMessages.ThisUserAlreadyClaim());
-                }
+                return BadRequest(CustomErrorsMessages.ThisUserAlreadyClaim());
             }
 
-            await userManager.AddClaimAsync(user, new Claim(claimDTO.ClaimType, "true"));
+            foreach (string dtoType in newClaims)
+            {
+                await userManager.AddClaimAsync(user, new Claim(dtoType, "true"));
+            }
             return NoContent();
         }
 
@@ -111,9 +124,39 @@ namespace MyOwnWeb.Controllers
             var user = await userManager.FindByNameAsync(claimDTO.Username);
 
             if (user is null) return NotFound();
-
-            await userManager.RemoveClaimAsync(user, new Claim(claimDTO.ClaimType, "true"));
+            foreach (string dtoType in claimDTO.ClaimType)
+            {
+                await userManager.RemoveClaimAsync(user, new Claim(dtoType, "true"));
+            }
             return NoContent();
+        }
+
+        [HttpGet("{username}")]
+        public async Task<ActionResult<ClaimDTO>>GetClaimsFromUser(string username)
+        {
+            var user = await userManager.FindByNameAsync(username);
+
+            if (user is null) return NotFound();
+
+            var claims = await userManager.GetClaimsAsync(user);
+
+            ClaimDTO claimDTO = new ClaimDTO() { ClaimType = [], Username = username };
+
+            claimDTO.ClaimType = ClaimsToArray(claims);
+
+            return claimDTO;
+        }
+
+        private string[] ClaimsToArray(IList<Claim> claims)
+        {
+            var tmpList = new List<string>();
+
+            foreach (var claim in claims)
+            {
+                tmpList.Add(claim.Type);
+            }
+
+            return tmpList.ToArray();
         }
 
         [HttpDelete("{username}")]
@@ -178,6 +221,25 @@ namespace MyOwnWeb.Controllers
                 Token = token,
                 Expiration = expiration
             };
+        }
+
+        private List<string> CompareClaims(string[] claimType, IList<Claim> claims)
+        {
+            var rntTypes = new List<string>(claimType);
+            var tmpList = new List<string>();
+            foreach (var claim in claims)
+            {
+                foreach (var type in rntTypes)
+                {
+                    if (claim.Type == type)
+                    {
+                        tmpList.Add(type);
+                        continue;
+                    }
+                }
+            }
+
+            return rntTypes.Except(tmpList).ToList();
         }
     }
 }

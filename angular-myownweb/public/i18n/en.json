@@ -55,6 +55,8 @@
     "value": "Value",
     "controlPanel": "Control panel",
     "controlPanel.users": "Users control panel",
+    "controlPanel.users.claim": "Claims",
+    "controlPanel.users.claim.edit": "Edit claims",
     "controlPanel.users.removed": "User {{value}} was successfully removed",
     "controlPanel.users.err.remove": "You cannot delete the same user",
     "controlPanel.users.description": "Modify claims or delete a user",

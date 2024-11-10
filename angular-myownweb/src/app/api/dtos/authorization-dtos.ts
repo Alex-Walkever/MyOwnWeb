@@ -22,9 +22,10 @@ export interface AuthorizationResponseDTO {
 export interface UserDTO {
     email: string;
     username: string;
+    claims: ClaimDTO;
 }
 
 export interface ClaimDTO{
-    claimType: string;
+    claimType: string[];
     userName: string;
 }

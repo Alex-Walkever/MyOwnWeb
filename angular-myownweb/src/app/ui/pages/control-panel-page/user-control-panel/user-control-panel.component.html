@@ -13,14 +13,36 @@
                 <td mat-cell *matCellDef="let element">{{element.username}}</td>
             </ng-container>
 
+            <ng-container matColumnDef="claims">
+                <th mat-header-cell *matHeaderCellDef>{{"controlPanel.users.claim" | translate}}</th>
+                <td mat-cell *matCellDef="let element">
+                        <mat-accordion>
+                            <mat-expansion-panel class="expansion-container" (opened)="panelOpenState.set(true)"
+                                (closed)="panelOpenState.set(false)" disabled="{{disableExpansionPanel(element)}}">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        {{"controlPanel.users.claim" | translate}}
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+
+                                @for (claimType of element.claims.claimType; track $index) {
+                                <li>{{claimType}}</li>
+                                }
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                </td>
+            </ng-container>
+
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef>{{"actions" | translate}}</th>
                 <td mat-cell *matCellDef="let element">
+                    <a mat-flat-button routerLink="{{urlStrings.urlEditClaims + '/' + element.username}}">{{"controlPanel.users.claim.edit" | translate}}</a>
                     <button mat-flat-button color="warn"
                         [swal]="{title: 'confirm' | translate, text: 'controlPanel.users.removePermision' | translate: {value: element.username}, showCancelButton: true}"
-                        (confirm)="remove(element.username)">
+                        (confirm)="remove(element.user)">
                         {{"delete" | translate}}
                     </button>
+                </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="columnsToShow"></tr>

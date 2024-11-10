@@ -10,6 +10,7 @@ export class UrlStrings {
   static urlRegister = 'register';
   static urlControlPanel = 'control-panel';
   static urlUserControlPanel = 'user';
+  static urlEditClaims = 'edit-claim';
 }
 
 export class LocalStorageStrings{

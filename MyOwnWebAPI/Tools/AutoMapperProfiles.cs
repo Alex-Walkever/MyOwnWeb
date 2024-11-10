@@ -21,7 +21,8 @@ namespace MyOwnWeb.Tools
 
         private void ConfigureUserMapping()
         {
-            CreateMap<IdentityUser, UserDTO>();
+            CreateMap<IdentityUser, UserDTO>().ForMember(x => x.Claims, 
+                userDTO => userDTO.Ignore());
         }
     }
 }

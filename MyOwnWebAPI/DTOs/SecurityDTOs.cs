@@ -6,6 +6,7 @@ namespace MyOwnWeb.DTOs
     {
         public required string Email { get; set; }
         public required string Username { get; set; }
+        public required ClaimDTO Claims { get; set; }
     }
 
     public class AuthenticationResponseDTO
@@ -44,7 +45,7 @@ namespace MyOwnWeb.DTOs
 
     public class ClaimDTO
     {
-        public required string ClaimType { get; set; }
+        public required string[] ClaimType { get; set; }
         public required string Username { get; set; }
     }
 }

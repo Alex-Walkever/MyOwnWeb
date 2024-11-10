@@ -31,6 +31,12 @@ export class SecurityService {
     return this.http.post(`${this.urlBase}/removeClaim`, claim);
   }
 
+  public getClaimsFromUser(username: string): Observable<HttpResponse<ClaimDTO>>{
+    let params = new HttpParams();
+    params = params.set('username', username);
+    return this.http.get<ClaimDTO>(`${this.urlBase}/`+username, {observe: 'response'});
+  }
+
   getToken(): string | null {
     return localStorage.getItem(this.keyToken);
   }
@@ -91,7 +97,7 @@ export class SecurityService {
     localStorage.removeItem(this.expirationKey);
   }
 
-  getRol(): string {
+  getAdminRol(): string {
     const admin = this.getJWTField('isadmin');
     if (admin) {
       return 'admin';
