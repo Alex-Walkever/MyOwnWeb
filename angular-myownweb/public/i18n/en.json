@@ -5,7 +5,7 @@
     "home": "Home",
     "showStrings": "Show translate strings",
     "aboutMe": "About me",
-    "experience": "Experience",
+    "experience": "Work experience",
     "createExperience": "Create job experience",
     "createExperience.title": "Job title",
     "createExperience.resume": "Resume of the job",
@@ -57,10 +57,16 @@
     "controlPanel.users": "Users control panel",
     "controlPanel.users.claim": "Claims",
     "controlPanel.users.claim.edit": "Edit claims",
+    "controlPanel.users.claim.hint": "Use spaces to separate the claims",
+    "controlPanel.users.claim.delete" : "Do you want to delete claim {{value}}?",
     "controlPanel.users.removed": "User {{value}} was successfully removed",
     "controlPanel.users.err.remove": "You cannot delete the same user",
     "controlPanel.users.description": "Modify claims or delete a user",
-    "controlPanel.users.removePermision" : "¿Quieres eliminar el usuario {{value}}?",
+    "controlPanel.users.removePermision" : "Do you want to delete user {{value}}?",
+    "controlPanel.experience": "Experiences control panel",
+    "controlPanel.experience.description": "Add or modify work experiences",
     "success": "Success",
-    "error": "Error"
+    "error": "Error",
+    "return": "Retrun",
+    "reload": "Reload"
 }

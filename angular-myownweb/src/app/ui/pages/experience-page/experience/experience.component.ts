@@ -9,15 +9,9 @@ import { transalteString } from '../../../../util/utility-functions';
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [TranslateModule, IndexEntityComponent],
+  imports: [],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.css',
-  providers: [{ provide: SERVICE_CRUD_INJECTION_TOKEN, useClass: ExperienceService }]
 })
 export class ExperienceComponent {
-  urlString = UrlStrings;
-  columnsToShow = ['id', 'enTitle', 'companyName', 'startDate', 'actions'];
-  transalteString: Function = (value: string, column: string) => {
-    return transalteString(value, column);
-  }
 }

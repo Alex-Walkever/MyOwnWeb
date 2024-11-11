@@ -38,7 +38,7 @@ export function getTranslation(str: string, translate: TranslateService): string
 
 export function getTranslationWithParams(str: string, value: string, translate: TranslateService): string {
     let returnString = '';
-    translate.get(str, {value: value}).subscribe((res: string) => {
+    translate.get(str, { value: value }).subscribe((res: string) => {
         returnString = res;
     });
     return returnString;
@@ -114,20 +114,20 @@ export function validateEmail(value: string): boolean {
     return false;
 }
 
-export function addTagToErrors(errors: string[], errorTag: string): string[]{
-    let rntErrors:string[] = [];
+export function addTagToErrors(errors: string[], errorTag: string): string[] {
+    let rntErrors: string[] = [];
 
     for (let i = 0; i < errors.length; i++) {
-      const element = errors[i];
+        const element = errors[i];
 
-      let tranerror = errorTag + element;
-      rntErrors[i] = tranerror;
+        let tranerror = errorTag + element;
+        rntErrors[i] = tranerror;
     }
 
     return rntErrors;
 }
 
-export function getHeaderString<TDTO>(response: HttpResponse<TDTO>, tag: string): number{
+export function getHeaderString<TDTO>(response: HttpResponse<TDTO>, tag: string): number {
     const header = response.headers.get(tag) as string;
     return parseInt(header, 10);
 }

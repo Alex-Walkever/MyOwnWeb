@@ -2,8 +2,6 @@ export class UrlStrings {
   static urlHome = '';
   static urlAboutMe = 'aboutme';
   static urlExperience = 'experience'
-  static urlCreateExperience = this.urlExperience+'/create-experience';
-  static urlEditExperience = this.urlExperience+'/edit-experience';
   static urlNoPageFound = 'page-no-found';
   static urlShowTranslateStrings = 'show-transalte-strings';
   static urlLogin = 'login';
@@ -11,6 +9,9 @@ export class UrlStrings {
   static urlControlPanel = 'control-panel';
   static urlUserControlPanel = 'user';
   static urlEditClaims = 'edit-claim';
+  static urlExperienceControlPanel = 'experience-control-panel';
+  static urlCreateExperience = this.urlExperienceControlPanel+'/create-experience';
+  static urlEditExperience = this.urlExperienceControlPanel+'/edit-experience';
 }
 
 export class LocalStorageStrings{

@@ -5,7 +5,7 @@
     "home": "Inicio",
     "showStrings": "Mostrar lineas traducidas",
     "aboutMe": "Acerca de mí",
-    "experience": "Experiencia",
+    "experience": "Experiencia laboral",
     "createExperience": "Crear experiencia laboral",
     "createExperience.title": "Titulo del trabajo",
     "createExperience.resume": "Resumen del trabajo",
@@ -57,10 +57,16 @@
     "controlPanel.users": "Panel de control de usuarios",
     "controlPanel.users.claim": "Claims",
     "controlPanel.users.claim.edit": "Editar claims",
+    "controlPanel.users.claim.hint": "Usa espacios para separar los claims",
+    "controlPanel.users.claim.delete" : "¿Quieres eliminar el claim {{value}}?",
     "controlPanel.users.description": "Modifica los claim o elimina a un usuario",
     "controlPanel.users.removed": "El usuario {{value}} fue eliminado con éxito",
     "controlPanel.users.err.remove": "No puedes eliminar al mismo usuario",
     "controlPanel.users.removePermision" : "¿Quieres eliminar el usuario {{value}}?",
+    "controlPanel.experience": "Panel de control de experiencias laborales",
+    "controlPanel.experience.description": "Agrega o modifica las experiencias laborales",
     "success": "Éxito",
-    "error": "Error"
+    "error": "Error",
+    "return": "Regresa",
+    "reload": "Recargar"
 }
