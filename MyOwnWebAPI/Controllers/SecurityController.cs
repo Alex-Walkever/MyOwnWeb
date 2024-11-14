@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using MyOwnWeb.DTOs;
@@ -23,18 +24,22 @@ namespace MyOwnWeb.Controllers
         private readonly IConfiguration configuration;
         private readonly AppDBContext context;
         private readonly IMapper mapper;
+        private readonly IOutputCacheStore outputCacheStore;
+        private const string cacheTag = "security";
 
         public SecurityController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IConfiguration configuration,
-            AppDBContext context, IMapper mapper)
+            AppDBContext context, IMapper mapper, IOutputCacheStore outputCacheStore)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.configuration = configuration;
             this.context = context;
             this.mapper = mapper;
+            this.outputCacheStore = outputCacheStore;
         }
 
         [HttpGet("userList")]
+        [OutputCache(Tags = [cacheTag])]
         public async Task<ActionResult<List<UserDTO>>> UserList([FromQuery] PaginationDTO pagination)
         {
             var queryable = context.Users.AsQueryable();
@@ -69,6 +74,7 @@ namespace MyOwnWeb.Controllers
 
             if (result.Succeeded)
             {
+                await outputCacheStore.EvictByTagAsync(cacheTag, default);
                 return await BuildToken(user);
             }
             else
@@ -115,6 +121,9 @@ namespace MyOwnWeb.Controllers
             {
                 await userManager.AddClaimAsync(user, new Claim(dtoType, "true"));
             }
+
+            await outputCacheStore.EvictByTagAsync(cacheTag, default);
+
             return NoContent();
         }
 
@@ -128,10 +137,13 @@ namespace MyOwnWeb.Controllers
             {
                 await userManager.RemoveClaimAsync(user, new Claim(dtoType, "true"));
             }
+            await outputCacheStore.EvictByTagAsync(cacheTag, default);
+
             return NoContent();
         }
 
         [HttpGet("{username}")]
+        [OutputCache(Tags = [cacheTag])]
         public async Task<ActionResult<ClaimDTO>>GetClaimsFromUser(string username)
         {
             var user = await userManager.FindByNameAsync(username);
@@ -147,6 +159,24 @@ namespace MyOwnWeb.Controllers
             return claimDTO;
         }
 
+        [HttpDelete("{username}")]
+        public async Task<IActionResult> Delete(string username)
+        {
+            var user = await userManager.FindByNameAsync(username);
+            if(user is null) return NotFound();
+            
+            var result = await userManager.DeleteAsync(user);
+
+            if (result.Succeeded)
+            {
+                await outputCacheStore.EvictByTagAsync(cacheTag, default);
+
+                return NoContent();
+            }
+
+            return BadRequest(result.Errors);
+        }
+
         private string[] ClaimsToArray(IList<Claim> claims)
         {
             var tmpList = new List<string>();
@@ -157,20 +187,6 @@ namespace MyOwnWeb.Controllers
             }
 
             return tmpList.ToArray();
-        }
-
-        [HttpDelete("{username}")]
-        public async Task<IActionResult> Delete(string username)
-        {
-            var user = await userManager.FindByNameAsync(username);
-            if(user is null) return NotFound();
-            
-            var result = await userManager.DeleteAsync(user);
-
-            if(result.Succeeded)
-                return NoContent();
-
-            return BadRequest(result.Errors);
         }
 
         private async Task<ActionResult<AuthenticationResponseDTO>> Login(IdentityUser user, string password)

@@ -1,30 +1,12 @@
 <app-menu></app-menu>
-
+<!-- 
 <div class="dowArrow">
     <button mat-icon-button [disabled]="clickable"
         (click)="show()"><mat-icon>arrow_drop_down</mat-icon></button>
-</div>
+</div> -->
 
 <div class="container">
     <router-outlet></router-outlet>
 </div>
 
-<div class="lenguage-Buttons">
-    <ng-container>
-        <button mat-raised-button (click)="translateText('es')">
-            <mat-icon>
-                <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/MX.svg" />
-            </mat-icon>
-            {{'changeLanguage.es' | translate}}
-        </button>
-    </ng-container>
-
-    <ng-container>
-        <button mat-raised-button (click)="translateText('en')">
-            <mat-icon>
-                <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" />
-            </mat-icon>
-            {{'changeLanguage.en' | translate}}
-        </button>
-    </ng-container>
-</div>
+<app-footer-menu></app-footer-menu>

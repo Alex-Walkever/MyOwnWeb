@@ -1,1 +1,48 @@
-To do
+@if(loading)
+{
+<app-loading></app-loading>
+}
+@else {
+<progress id="progressbar" value="5" max="{{totalAmoutOfRecords}}"></progress>
+
+<div id="allCards">
+    @for(experience of allExperiences; track $index){
+        {{evenNumer($index)}}
+    <mat-divider style="width: 50.5%;" id="divider1{{+$index}}"></mat-divider>
+    <mat-card id="card{{+$index}}">
+        <mat-card-header>
+            <mat-card-title>{{getTitle(experience)}}</mat-card-title>
+            <mat-card-subtitle>{{experience.companyName}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            {{getResume(experience)}}
+            <div>
+                <b>{{'createExperience.project' | translate}}: </b>{{getProject(experience)}}
+            </div>
+            <b>{{'createExperience.skills' | translate}}: </b>{{getSkills(experience)}}
+            <div>
+                <b>{{'createExperience.startDate' | translate}}:
+                </b>{{yearMonth(experience.startDate.toString())}}
+                @if(experience.currentWork)
+                {
+                <b>{{'createExperience.currentWork' | translate }}</b>
+                }@else {
+                <b>{{'createExperience.endDate' | translate}}: </b>{{yearMonth(experience.endDate.toString())}}
+                }
+            </div>
+            @if(experience.urlToProject)
+            {
+            <mat-card-actions>
+                <button (click)="goToUrl(experience.urlToProject)" mat-flat-button>{{"createExperience.urlToProject" |
+                    translate}}
+                    <mat-icon>link</mat-icon>
+                </button>
+            </mat-card-actions>
+            }
+        </mat-card-content>
+    </mat-card>
+    <mat-divider style="width: 50.5%;" id="divider2{{+$index}}"></mat-divider>
+    }
+</div>
+{{finishAllCards()}}
+}

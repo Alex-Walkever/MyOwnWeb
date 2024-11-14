@@ -13,6 +13,7 @@ import { MainControlPanelComponent } from './ui/pages/control-panel-page/main-co
 import { UserControlPanelComponent } from './ui/pages/control-panel-page/user-control-panel/user-control-panel.component';
 import { EditClaimsUserComponent } from './ui/pages/authorization-page/edit-claims-user/edit-claims-user.component';
 import { ExperienceControlPanelComponent } from './ui/pages/control-panel-page/experience-control-panel/experience-control-panel.component';
+import { isAdminGuard, isUserGuard } from './lib/guards/is-admin.guard';
 
 export const routes: Routes = [
     { path: UrlStrings.urlHome, component: MainPageComponent },
@@ -20,18 +21,24 @@ export const routes: Routes = [
     { path: UrlStrings.urlAboutMe, component: AboutMeComponent },
 
     { path: UrlStrings.urlExperience, component: ExperienceComponent },
-    
+
     { path: UrlStrings.urlLogin, component: LoginComponent },
     { path: UrlStrings.urlRegister, component: RegisterComponent },
 
-    { path: UrlStrings.urlControlPanel, component: MainControlPanelComponent },
-    { path: UrlStrings.urlControlPanel + '/' + UrlStrings.urlUserControlPanel, component: UserControlPanelComponent },
-    { path: UrlStrings.urlControlPanel + '/' + UrlStrings.urlUserControlPanel + '/' + UrlStrings.urlEditClaims + '/:username', component: EditClaimsUserComponent },
-    {path: UrlStrings.urlControlPanel + '/' + UrlStrings.urlExperienceControlPanel, component: ExperienceControlPanelComponent},
-    { path: UrlStrings.urlCreateExperience, component: CreateExperienceComponent },
-    { path: UrlStrings.urlEditExperience + '/:id', component: EditExperienceComponent },
+    { path: UrlStrings.urlControlPanel, component: MainControlPanelComponent, canActivate: [isUserGuard] },
+    { path: UrlStrings.urlControlPanel + '/' + UrlStrings.urlUserControlPanel, component: UserControlPanelComponent, canActivate: [isAdminGuard] },
+    {
+        path: UrlStrings.urlControlPanel + '/' + UrlStrings.urlUserControlPanel + '/' + UrlStrings.urlEditClaims + '/:username',
+        component: EditClaimsUserComponent, canActivate: [isAdminGuard]
+    },
+    {
+        path: UrlStrings.urlControlPanel + '/' + UrlStrings.urlExperienceControlPanel,
+        component: ExperienceControlPanelComponent, canActivate: [isAdminGuard]
+    },
+    { path: UrlStrings.urlCreateExperience, component: CreateExperienceComponent, canActivate: [isAdminGuard] },
+    { path: UrlStrings.urlEditExperience + '/:id', component: EditExperienceComponent, canActivate: [isAdminGuard] },
 
-    { path: UrlStrings.urlShowTranslateStrings, component: ShowTranslateStringsComponent },
+    { path: UrlStrings.urlShowTranslateStrings, component: ShowTranslateStringsComponent, canActivate: [isAdminGuard] },
 
     { path: UrlStrings.urlNoPageFound, component: NoPageComponent },
     { path: '**', redirectTo: `/${UrlStrings.urlNoPageFound}` }

@@ -68,5 +68,6 @@
     "success": "Success",
     "error": "Error",
     "return": "Retrun",
-    "reload": "Reload"
+    "reload": "Reload",
+    "filter": "Filter"
 }

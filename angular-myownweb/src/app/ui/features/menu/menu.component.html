@@ -21,14 +21,15 @@
     </div>
 
     <div class="space"> </div>
-
-    <div>
-        <a mat-button routerLink="{{[urlStrings.urlShowTranslateStrings]}}">
-            <mat-icon>menu_book</mat-icon>
-            {{'showStrings' | translate}}
-        </a>
-    </div>
-<app-authorization>
+    <app-authorization rol="{{userRole.isAdmin}}">
+        <div authorized>
+            <a mat-button routerLink="{{[urlStrings.urlShowTranslateStrings]}}">
+                <mat-icon>menu_book</mat-icon>
+                {{'showStrings' | translate}}
+            </a>
+        </div>
+    </app-authorization>
+    <app-authorization>
         <ng-container authorized>
             <a mat-button routerLink="{{[urlStrings.urlControlPanel]}}">
                 <mat-icon>accessibility</mat-icon>
@@ -39,10 +40,10 @@
             </a>
         </ng-container>
         <ng-container noAuthorized>
-        <a mat-button routerLink="{{[urlStrings.urlLogin]}}">
-            <mat-icon>login</mat-icon>
-            {{'authorization.login' | translate}}
-        </a>
-    </ng-container>
-</app-authorization>
+            <a mat-button routerLink="{{[urlStrings.urlLogin]}}">
+                <mat-icon>login</mat-icon>
+                {{'authorization.login' | translate}}
+            </a>
+        </ng-container>
+    </app-authorization>
 </mat-toolbar>

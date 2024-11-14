@@ -1,34 +1,23 @@
 import { Component, inject, input, OnInit, ViewChild } from '@angular/core';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatIconRegistry } from '@angular/material/icon';
 import { Router, RouterOutlet } from '@angular/router';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { MenuComponent } from "./ui/features/menu/menu.component";
-import { BehaviorSubject, debounceTime, timer } from 'rxjs';
+import { BehaviorSubject, debounceTime } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { AnimationShowAndHide, globalAnimationShowAndHide } from './util/utility-functions';
-import { GlobalsEventsStrings, LocalStorageStrings } from './util/utility-strings';
-import { NgxGlobalEventsService } from 'ngx-global-events';
+import { FooterMenuComponent } from './ui/features/footer-menu/footer-menu.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MenuComponent, MatIconModule, MatButtonModule, TranslateModule],
+  imports: [RouterOutlet, MenuComponent, MatButtonModule, TranslateModule, FooterMenuComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-
-  translateService = inject(TranslateService);
   matIconRegistry = inject(MatIconRegistry);
   router = inject(Router);
-  private globalEventsService = inject(NgxGlobalEventsService);
-
-  constructor() {
-    var lang = localStorage.getItem(LocalStorageStrings.language);
-    if (lang) {
-      this.translateText(lang!.toString());
-    }
-  }
 
   @ViewChild(MenuComponent)
   child: MenuComponent | undefined;
@@ -71,14 +60,12 @@ export class AppComponent implements OnInit {
   timerBehavior = new BehaviorSubject<void>(undefined);
   timerPipe = this.timerBehavior.pipe(debounceTime(this.waitTime));
   timerSubscribe = this.timerPipe.subscribe(() => {
-    this.hide();
+    // this.hide();
   });
 
   animatedShow!: AnimationShowAndHide[];
   animatedHide!: AnimationShowAndHide[];
   clickable: boolean = true;
-
-
 
   show() {
     globalAnimationShowAndHide(this.animatedShow);
@@ -93,12 +80,5 @@ export class AppComponent implements OnInit {
     globalAnimationShowAndHide(this.animatedHide);
     this.child?.hide();
     this.clickable = false;
-  }
-
-  translateText(lang: string) {
-    this.translateService.use(lang);
-    this.translateService.setDefaultLang(lang);
-    localStorage.setItem(LocalStorageStrings.language, lang);
-    this.globalEventsService.emit(GlobalsEventsStrings.changeLenguage);
   }
 }

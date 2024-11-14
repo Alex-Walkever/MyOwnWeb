@@ -1,0 +1,31 @@
+<footer>
+<mat-progress-bar mode="buffer"></mat-progress-bar>
+<mat-grid-list [cols]="2" rowHeight="100px">
+    <mat-grid-tile>
+
+        <div>
+            to do
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+        <div class="lenguage-Buttons">
+            <ng-container>
+                <button mat-raised-button (click)="translateText('es')">
+                    <mat-icon>
+                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/MX.svg" />
+                    </mat-icon>
+                    {{'changeLanguage.es' | translate}}
+                </button>
+
+                <button mat-raised-button (click)="translateText('en')">
+                    <mat-icon>
+                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" />
+                    </mat-icon>
+                    {{'changeLanguage.en' | translate}}
+                </button>
+            </ng-container>
+        </div>
+        </mat-grid-tile>
+</mat-grid-list>
+</footer>

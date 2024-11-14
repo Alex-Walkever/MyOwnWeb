@@ -1,0 +1,12 @@
+.lenguage-Buttons mat-icon {
+    margin-bottom: 9px;
+}
+
+.lenguage-Buttons button {
+    margin-right: 5px;
+}
+
+.lenguage-Buttons {
+    position: absolute;
+    right: 1px;
+}

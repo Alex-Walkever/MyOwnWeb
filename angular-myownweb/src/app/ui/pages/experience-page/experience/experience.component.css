@@ -1,0 +1,21 @@
+mat-card{
+    max-width: 35%;
+    position: relative;
+}
+
+mat-divider{
+    position: relative;
+}
+
+progress{
+    -webkit-transform-origin: 0 100%;
+    -webkit-transform: rotate(90deg);
+    -moz-transform-origin: 0 100%;
+    -moz-transform: rotate(90deg);
+    -ms-transform-origin: 0 100%;
+    -ms-transform: rotate(90deg);
+    transform-origin: 0 100%;
+    transform: rotate(90deg);
+    position: relative;
+    left: 50%;
+}

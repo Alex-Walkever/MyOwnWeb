@@ -29,3 +29,9 @@ export class ErrorsStrings{
 export class HeadersResponses{
   static totalAmountOfRecords = "total-amount-of-records";
 }
+
+export class UserRolStrings{
+  static isAdmin = "isadmin";
+  static isUser = "isuser";
+  static isOwner = "isowner";
+}

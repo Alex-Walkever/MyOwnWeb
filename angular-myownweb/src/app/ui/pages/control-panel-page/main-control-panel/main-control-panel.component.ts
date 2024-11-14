@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthorizationComponent } from "../../authorization-page/authorization/authorization.component";
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterLink } from '@angular/router';
-import { UrlStrings } from '../../../../util/utility-strings';
+import { UrlStrings, UserRolStrings } from '../../../../util/utility-strings';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,6 +20,7 @@ export class MainControlPanelComponent {
     this.breakpoint = (window.innerWidth <= 1300) ? 1 : this.maxCols;
   }
 
+  userRole = UserRolStrings;
   urlStrings = UrlStrings;
   routerLink = RouterLink;
   breakpoint: number;

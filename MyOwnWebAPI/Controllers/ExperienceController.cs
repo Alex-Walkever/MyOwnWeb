@@ -38,6 +38,17 @@ namespace MyOwnWeb.Controllers
                 .ProjectTo<ExperienceDTO>(mapper.ConfigurationProvider).ToListAsync();
         }
 
+        [HttpGet("allExperiences")]
+        [OutputCache(Tags = [cacheTag])]
+        public async Task<List<ExperienceDTO>> Get()
+        {
+            var quaryable = context.Set<Experience>().AsQueryable();
+            await HttpContext.InsertPaginationParametersInHeader(quaryable);
+            return await quaryable
+                .OrderByDescending(g => g.StartDate)
+                .ProjectTo<ExperienceDTO>(mapper.ConfigurationProvider).ToListAsync();
+        }
+
         [HttpGet("{id:int}", Name = "GetById")]
         [OutputCache(Tags = [cacheTag])]
         public async Task<ActionResult<ExperienceDTO>> Get(int id)

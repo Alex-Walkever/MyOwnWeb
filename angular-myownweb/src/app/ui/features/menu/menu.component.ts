@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { UrlStrings } from '../../../util/utility-strings';
+import { UrlStrings, UserRolStrings } from '../../../util/utility-strings';
 import { CommonModule } from '@angular/common';
 import { AnimationShowAndHide, globalAnimationShowAndHide } from '../../../util/utility-functions';
 import { AuthorizationComponent } from '../../pages/authorization-page/authorization/authorization.component';
@@ -36,6 +36,7 @@ export class MenuComponent implements OnInit{
   }
 
   urlStrings = UrlStrings;
+  userRole = UserRolStrings;
 
   securityService = inject(SecurityService);  
 

@@ -5,6 +5,7 @@ import { AuthorizationResponseDTO, ClaimDTO, UserCredentialsDTO, UserCredentials
 import { Observable, tap } from 'rxjs';
 import { buildQueryParams } from '../../util/utility-functions';
 import { environment } from '../../../environments/environment';
+import { UserRolStrings } from '../../util/utility-strings';
 
 @Injectable({
   providedIn: 'root'
@@ -98,9 +99,27 @@ export class SecurityService {
   }
 
   getAdminRol(): string {
-    const admin = this.getJWTField('isadmin');
+    const admin = this.getJWTField(UserRolStrings.isAdmin);
     if (admin) {
-      return 'admin';
+      return UserRolStrings.isAdmin;
+    } else {
+      return '';
+    }
+  }
+
+  getOwnerRol(): string {
+    const owner = this.getJWTField(UserRolStrings.isOwner);
+    if (owner) {
+      return UserRolStrings.isOwner;
+    } else {
+      return '';
+    }
+  }
+  
+  getUserRol(): string {
+    const user = this.getJWTField(UserRolStrings.isUser);
+    if (user) {
+      return UserRolStrings.isUser;
     } else {
       return '';
     }

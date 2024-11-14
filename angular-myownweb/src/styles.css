@@ -1,39 +1,40 @@
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
 
-.container{
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
     margin: 0 100px;
     padding-bottom: 100px;
 }
 
-body{
+body {
     height: fit-content;
-}
-
-.lenguage-Buttons{
-    position: fixed;
-    position: -webkit-fixed;
-    bottom: 9px;
-    right: 0;
-}
-
-.lenguage-Buttons mat-icon {
-    margin-bottom: 9px;
-}
-
-.lenguage-Buttons button {
-    margin-right: 5px;
 }
 
 .container-Buttons {
     margin-top: 1rem;
 }
-.container-Buttons button{
+
+.container-Buttons button {
     margin-right: 5px;
     margin-bottom: 5px;
 }
 
-.dowArrow{
+.dowArrow {
     position: fixed;
     z-index: 1000;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.space {
+    flex: 1 1 auto;
 }

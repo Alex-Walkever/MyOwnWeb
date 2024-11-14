@@ -21,6 +21,10 @@ export class ExperienceService implements IServiceCRUD<ExperienceDTO, Experience
     let queryParams = buildQueryParams(pagination);
     return this.http.get<ExperienceDTO[]>(this.urlBase, {params: queryParams, observe: 'response'});
   }
+
+  public getAllExperiences() : Observable<HttpResponse<ExperienceDTO[]>>{
+    return this.http.get<ExperienceDTO[]>(`${this.urlBase}/allExperiences`, {observe: 'response'});
+  }
   
   public getFromId(id: number): Observable<ExperienceDTO>{
     return this.http.get<ExperienceDTO>(`${this.urlBase}/${id}`);

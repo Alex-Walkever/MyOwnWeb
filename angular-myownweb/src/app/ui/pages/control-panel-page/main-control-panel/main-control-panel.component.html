@@ -1,6 +1,6 @@
 <h2>{{"controlPanel" | translate}}</h2>
 
-<app-authorization rol="admin">
+<app-authorization rol="{{userRole.isAdmin}}">
     <ng-container authorized>
         <mat-card class="card-container">
             <mat-card-header>

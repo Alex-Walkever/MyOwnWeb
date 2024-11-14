@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-about-me',
@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './about-me.component.html',
   styleUrl: './about-me.component.css',
 })
-export class AboutMeComponent {
-
+export class AboutMeComponent{
+@Input()
+igShortCode: string = "Cvhxp3dOmxJ"
 }
