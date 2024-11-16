@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "allowedCommonJsDependencies": ["moment", "sweetalert2"],
             "outputPath": "dist/angular-myownweb",
             "index": "src/index.html",
             "browser": "src/main.ts",

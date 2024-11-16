@@ -10,3 +10,20 @@
     position: absolute;
     right: 1px;
 }
+
+.copyrights-container img{
+    margin-right: 5px;
+}
+
+.copyrights-container p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.copyrights-container a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}

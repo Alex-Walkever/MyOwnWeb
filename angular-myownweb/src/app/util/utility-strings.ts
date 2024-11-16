@@ -12,6 +12,7 @@ export class UrlStrings {
   static urlExperienceControlPanel = 'experience-control-panel';
   static urlCreateExperience = this.urlExperienceControlPanel+'/create-experience';
   static urlEditExperience = this.urlExperienceControlPanel+'/edit-experience';
+  static urlContactMe = 'contact-me';
 }
 
 export class LocalStorageStrings{

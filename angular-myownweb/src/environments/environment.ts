@@ -1,4 +1,5 @@
 export const environment = {
     production: true,
-    apiURL: ''
+    apiURL: '',
+    webTitle: 'Alejandro Rodriguez Navarro'
 };

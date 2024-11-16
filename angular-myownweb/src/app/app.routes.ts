@@ -14,6 +14,7 @@ import { UserControlPanelComponent } from './ui/pages/control-panel-page/user-co
 import { EditClaimsUserComponent } from './ui/pages/authorization-page/edit-claims-user/edit-claims-user.component';
 import { ExperienceControlPanelComponent } from './ui/pages/control-panel-page/experience-control-panel/experience-control-panel.component';
 import { isAdminGuard, isUserGuard } from './lib/guards/is-admin.guard';
+import { ContactMeComponent } from './ui/pages/contact-me-page/contact-me/contact-me.component';
 
 export const routes: Routes = [
     { path: UrlStrings.urlHome, component: MainPageComponent },
@@ -39,6 +40,7 @@ export const routes: Routes = [
     { path: UrlStrings.urlEditExperience + '/:id', component: EditExperienceComponent, canActivate: [isAdminGuard] },
 
     { path: UrlStrings.urlShowTranslateStrings, component: ShowTranslateStringsComponent, canActivate: [isAdminGuard] },
+    { path: UrlStrings.urlContactMe, component: ContactMeComponent },
 
     { path: UrlStrings.urlNoPageFound, component: NoPageComponent },
     { path: '**', redirectTo: `/${UrlStrings.urlNoPageFound}` }

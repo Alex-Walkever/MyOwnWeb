@@ -2,12 +2,11 @@ import { Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NgxGlobalEventsService } from 'ngx-global-events';
-import { GlobalsEventsStrings, LocalStorageStrings } from '../../../util/utility-strings';
-import { MatButton } from '@angular/material/button';
+import { GlobalsEventsStrings, LocalStorageStrings, UrlStrings } from '../../../util/utility-strings';
+import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterLink } from '@angular/router';
-
 
 export interface Tile {
   cols: number;
@@ -17,13 +16,15 @@ export interface Tile {
 @Component({
   selector: 'app-footer-menu',
   standalone: true,
-  imports: [MatIconModule, TranslateModule, MatButton, MatProgressBarModule, MatGridListModule],
+  imports: [MatIconModule, TranslateModule, MatButtonModule, MatProgressBarModule, MatGridListModule, RouterLink],
   templateUrl: './footer-menu.component.html',
   styleUrl: './footer-menu.component.css'
 })
 export class FooterMenuComponent {
   private globalEventsService = inject(NgxGlobalEventsService);
   translateService = inject(TranslateService);
+
+  urlStrings = UrlStrings;
 
   tiles: Tile[] = [
     {cols: 3, rows: 1},

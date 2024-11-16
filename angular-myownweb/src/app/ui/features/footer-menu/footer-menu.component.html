@@ -1,10 +1,16 @@
-<footer>
+<!-- <footer> -->
 <mat-progress-bar mode="buffer"></mat-progress-bar>
-<mat-grid-list [cols]="2" rowHeight="100px">
+<mat-grid-list [cols]="2" rowHeight="150px">
     <mat-grid-tile>
-
-        <div>
-            to do
+        <div class="copyrights-container">
+            <p>
+                <img src="favicon.ico" />
+                {{'copyrights' | translate}}
+            </p>
+            <a mat-button routerLink="{{[urlStrings.urlContactMe]}}">
+                <mat-icon>person</mat-icon>
+                {{'contactMe' | translate}}
+            </a>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -26,6 +32,6 @@
                 </button>
             </ng-container>
         </div>
-        </mat-grid-tile>
+    </mat-grid-tile>
 </mat-grid-list>
-</footer>
+<!-- </footer> -->
