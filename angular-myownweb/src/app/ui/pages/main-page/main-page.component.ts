@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { TabTitleComponent } from "../../../util/tab-title/tab-title.component";
 
 @Component({

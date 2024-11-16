@@ -3,7 +3,6 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { UserCredentialsEmailDTO, UserCredentialsUsernameDTO } from '../../../../api/dtos/authorization-dtos';
 import { validateEmail } from '../../../../util/utility-functions';
@@ -14,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-authorization-form-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, MatFormFieldModule, MatButtonModule, MatInputModule, ShowErrorsComponent, TranslateModule, MatIconModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatButtonModule, MatInputModule, ShowErrorsComponent, TranslateModule, MatIconModule],
   templateUrl: './authorization-form-login.component.html',
   styleUrl: './authorization-form-login.component.css'
 })

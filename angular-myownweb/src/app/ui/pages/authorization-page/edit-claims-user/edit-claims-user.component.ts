@@ -1,7 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { SecurityService } from '../../../../api/services/security.service';
 import { ClaimDTO } from '../../../../api/dtos/authorization-dtos';
-import { addTagToErrors, extractErrors, extractErrorsEntity } from '../../../../util/utility-functions';
+import { addTagToErrors, extractErrorsEntity } from '../../../../util/utility-functions';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoadingComponent } from "../../../../util/loading/loading.component";
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';

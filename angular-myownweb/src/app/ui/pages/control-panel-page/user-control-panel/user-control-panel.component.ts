@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { SecurityService } from '../../../../api/services/security.service';
-import { ClaimDTO, UserDTO } from '../../../../api/dtos/authorization-dtos';
+import { UserDTO } from '../../../../api/dtos/authorization-dtos';
 import { PaginationDTO } from '../../../../api/dtos/paginationDTO';
 import { PageSizeOptions } from '../../../../util/utility-variables';
 import { HeadersResponses, UrlStrings } from '../../../../util/utility-strings';

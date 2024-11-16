@@ -7,8 +7,6 @@ import { BehaviorSubject, debounceTime } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { AnimationShowAndHide, globalAnimationShowAndHide } from './util/utility-functions';
 import { FooterMenuComponent } from './ui/features/footer-menu/footer-menu.component';
-import { Title } from '@angular/platform-browser';
-import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',

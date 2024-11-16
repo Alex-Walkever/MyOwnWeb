@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { SecurityService } from '../../../../api/services/security.service';
 import { Router, RouterLink } from '@angular/router';
-import {  UserCredentialsEmailDTO, UserCredentialsUsernameDTO } from '../../../../api/dtos/authorization-dtos';
+import { UserCredentialsEmailDTO, UserCredentialsUsernameDTO } from '../../../../api/dtos/authorization-dtos';
 import { extractErrorsEntity, addTagToErrors } from '../../../../util/utility-functions';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { UrlStrings } from '../../../../util/utility-strings';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthorizationFormRegistrationComponent } from '../authorization-form-registration/authorization-form-registration.component';
 import { AuthorizationFormLoginComponent } from "../authorization-form-login/authorization-form-login.component";
 import { TabTitleComponent } from "../../../../util/tab-title/tab-title.component";
 

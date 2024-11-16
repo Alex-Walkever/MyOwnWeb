@@ -1,7 +1,5 @@
 import { TranslateService } from "@ngx-translate/core";
 import { HttpParams, HttpResponse } from "@angular/common/http";
-import { LocalStorageStrings } from "./utility-strings";
-import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
 export function extractErrors(obj: any): string[] {
     const err = obj.error.errors;

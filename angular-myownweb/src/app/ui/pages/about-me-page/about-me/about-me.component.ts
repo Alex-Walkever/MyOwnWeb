@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { TabTitleComponent } from "../../../../util/tab-title/tab-title.component";
 
 @Component({
@@ -9,6 +9,4 @@ import { TabTitleComponent } from "../../../../util/tab-title/tab-title.componen
   styleUrl: './about-me.component.css',
 })
 export class AboutMeComponent{
-@Input()
-igShortCode: string = "Cvhxp3dOmxJ"
 }

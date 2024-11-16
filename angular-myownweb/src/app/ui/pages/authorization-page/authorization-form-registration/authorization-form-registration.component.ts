@@ -7,14 +7,13 @@ import { ErrorsStrings, UrlStrings } from '../../../../util/utility-strings';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
 import { ShowErrorsComponent } from '../../../features/show-errors/show-errors.component';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-authorization-form-registration',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, MatFormFieldModule, MatButtonModule, MatInputModule, ShowErrorsComponent, TranslateModule, MatIconModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatButtonModule, MatInputModule, ShowErrorsComponent, TranslateModule, MatIconModule],
   templateUrl: './authorization-form-registration.component.html',
   styleUrl: './authorization-form-registration.component.css'
 })

@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
 import { GenericListComponent } from '../generic-list/generic-list.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2'
 import { IServiceCRUD } from '../../../lib/interfaces/IServiceCRUD';
-import { getHeaderString, getYearMonthString } from '../../../util/utility-functions';
+import { getHeaderString } from '../../../util/utility-functions';
 import { HeadersResponses } from '../../../util/utility-strings';
 
 @Component({

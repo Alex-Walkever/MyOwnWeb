@@ -41,7 +41,7 @@
                     <a mat-flat-button routerLink="{{urlStrings.urlEditClaims + '/' + element.username}}">{{"controlPanel.users.claim.edit" | translate}}</a>
                     <button mat-flat-button color="warn"
                         [swal]="{title: 'confirm' | translate, text: 'controlPanel.users.removePermision' | translate: {value: element.username}, showCancelButton: true}"
-                        (confirm)="remove(element.user)">
+                        (confirm)="remove(element.username)">
                         {{"delete" | translate}}
                     </button>
                 </td>

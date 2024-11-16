@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { addTagToErrors, extractErrorsEntity } from '../../../../util/utility-functions';
 import { UserCredentialsDTO } from '../../../../api/dtos/authorization-dtos';
-import { ShowErrorsComponent } from "../../../features/show-errors/show-errors.component";
 import { TabTitleComponent } from "../../../../util/tab-title/tab-title.component";
 
 @Component({
