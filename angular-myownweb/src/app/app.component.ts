@@ -24,10 +24,6 @@ export class AppComponent implements OnInit {
   @ViewChild(MenuComponent)
   child: MenuComponent | undefined;
 
-  constructor(private titleService: Title){
-    titleService.setTitle(environment.webTitle);
-  }
-
   ngOnInit(): void {
     this.animatedShow = [{
       htmlElement: <HTMLElement>document.querySelector(".dowArrow"),

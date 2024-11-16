@@ -7,11 +7,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { TabTitleComponent } from "../../../../util/tab-title/tab-title.component";
 
 @Component({
   selector: 'app-main-control-panel',
   standalone: true,
-  imports: [AuthorizationComponent, MatGridListModule, MatButtonModule, RouterLink, TranslateModule, MatIconModule, MatCardModule],
+  imports: [AuthorizationComponent, MatGridListModule, MatButtonModule, RouterLink, TranslateModule, MatIconModule, MatCardModule, TabTitleComponent],
   templateUrl: './main-control-panel.component.html',
   styleUrl: './main-control-panel.component.css'
 })

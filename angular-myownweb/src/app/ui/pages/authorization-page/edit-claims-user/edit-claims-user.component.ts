@@ -17,12 +17,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ShowErrorsComponent } from "../../../features/show-errors/show-errors.component";
+import { TabTitleComponent } from "../../../../util/tab-title/tab-title.component";
 
 @Component({
   selector: 'app-edit-claims-user',
   standalone: true,
   imports: [TranslateModule, LoadingComponent, MatTableModule, MatButtonModule, MatPaginatorModule, SweetAlert2Module,
-    RouterLink, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIconModule, ShowErrorsComponent],
+    RouterLink, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIconModule, ShowErrorsComponent, TabTitleComponent],
   templateUrl: './edit-claims-user.component.html',
   styleUrl: './edit-claims-user.component.css'
 })

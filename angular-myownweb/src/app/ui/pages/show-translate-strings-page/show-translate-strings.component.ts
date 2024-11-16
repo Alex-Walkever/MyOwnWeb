@@ -5,11 +5,12 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { TabTitleComponent } from "../../../util/tab-title/tab-title.component";
 
 @Component({
   selector: 'app-show-translate-strings',
   standalone: true,
-  imports: [TranslateModule, MatTableModule, MatPaginatorModule, MatFormFieldModule, MatInputModule],
+  imports: [TranslateModule, MatTableModule, MatPaginatorModule, MatFormFieldModule, MatInputModule, TabTitleComponent],
   templateUrl: './show-translate-strings.component.html',
   styleUrl: './show-translate-strings.component.css'
 })

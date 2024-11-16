@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { TabTitleComponent } from "../../../../util/tab-title/tab-title.component";
 
 @Component({
   selector: 'app-about-me',
   standalone: true,
-  imports: [],
+  imports: [TabTitleComponent],
   templateUrl: './about-me.component.html',
   styleUrl: './about-me.component.css',
 })

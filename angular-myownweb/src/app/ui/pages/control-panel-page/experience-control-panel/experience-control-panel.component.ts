@@ -5,11 +5,12 @@ import { transalteString } from '../../../../util/utility-functions';
 import { TranslateModule } from '@ngx-translate/core';
 import { SERVICE_CRUD_INJECTION_TOKEN } from '../../../../util/utility-variables';
 import { ExperienceService } from '../../../../api/services/experience.service';
+import { TabTitleComponent } from "../../../../util/tab-title/tab-title.component";
 
 @Component({
   selector: 'app-experience-control-panel',
   standalone: true,
-  imports: [TranslateModule, IndexEntityComponent],
+  imports: [TranslateModule, IndexEntityComponent, TabTitleComponent],
   templateUrl: './experience-control-panel.component.html',
   styleUrl: './experience-control-panel.component.css',
   providers: [{ provide: SERVICE_CRUD_INJECTION_TOKEN, useClass: ExperienceService }]

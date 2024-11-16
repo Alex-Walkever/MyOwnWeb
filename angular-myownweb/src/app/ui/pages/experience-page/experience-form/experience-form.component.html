@@ -106,6 +106,6 @@
 
     <div class="container-Buttons">
         <button type="submit" mat-flat-button [disabled]="form.invalid">{{"save" | translate}}</button>
-        <a mat-stroked-button routerLink="/{{urlStrings.urlExperience}}">{{"cancel" | translate}}</a>
+        <a mat-stroked-button routerLink="/{{urlStrings.urlControlPanel+'/'+urlStrings.urlExperienceControlPanel}}">{{"cancel" | translate}}</a>
     </div>
 </form>

@@ -9,11 +9,12 @@ import { UrlStrings } from '../../../../util/utility-strings';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthorizationFormRegistrationComponent } from '../authorization-form-registration/authorization-form-registration.component';
 import { AuthorizationFormLoginComponent } from "../authorization-form-login/authorization-form-login.component";
+import { TabTitleComponent } from "../../../../util/tab-title/tab-title.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [TranslateModule, MatGridListModule, RouterLink, MatButtonModule, AuthorizationFormLoginComponent],
+  imports: [TranslateModule, MatGridListModule, RouterLink, MatButtonModule, AuthorizationFormLoginComponent, TabTitleComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

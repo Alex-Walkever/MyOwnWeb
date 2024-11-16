@@ -14,11 +14,12 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { RouterLink } from '@angular/router';
+import { TabTitleComponent } from "../../../../util/tab-title/tab-title.component";
 
 @Component({
   selector: 'app-user-control-panel',
   standalone: true,
-  imports: [TranslateModule, GenericListComponent, MatPaginatorModule, MatTableModule, SweetAlert2Module, MatButtonModule, MatExpansionModule, RouterLink],
+  imports: [TranslateModule, GenericListComponent, MatPaginatorModule, MatTableModule, SweetAlert2Module, MatButtonModule, MatExpansionModule, RouterLink, TabTitleComponent],
   templateUrl: './user-control-panel.component.html',
   styleUrl: './user-control-panel.component.css'
 })

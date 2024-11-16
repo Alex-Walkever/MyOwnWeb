@@ -5,7 +5,8 @@ import { AuthorizationResponseDTO, ClaimDTO, UserCredentialsDTO, UserCredentials
 import { Observable, tap } from 'rxjs';
 import { buildQueryParams } from '../../util/utility-functions';
 import { environment } from '../../../environments/environment';
-import { UserRolStrings } from '../../util/utility-strings';
+import { UrlStrings, UserRolStrings } from '../../util/utility-strings';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class SecurityService {
   constructor() { }
 
   private http = inject(HttpClient);
+  private router = inject(Router);
   private urlBase = environment.apiURL + '/security';
   private readonly keyToken = 'token';
   private readonly expirationKey = 'expiration-token';
@@ -32,10 +34,10 @@ export class SecurityService {
     return this.http.post(`${this.urlBase}/removeClaim`, claim);
   }
 
-  public getClaimsFromUser(username: string): Observable<HttpResponse<ClaimDTO>>{
+  public getClaimsFromUser(username: string): Observable<HttpResponse<ClaimDTO>> {
     let params = new HttpParams();
     params = params.set('username', username);
-    return this.http.get<ClaimDTO>(`${this.urlBase}/`+username, {observe: 'response'});
+    return this.http.get<ClaimDTO>(`${this.urlBase}/` + username, { observe: 'response' });
   }
 
   getToken(): string | null {
@@ -57,10 +59,10 @@ export class SecurityService {
       .pipe(tap(authorizationResponse => this.saveToken(authorizationResponse)));
   }
 
-  public remove(username: string){
+  public remove(username: string) {
     let params = new HttpParams();
     params = params.set('username', username);
-    return this.http.delete(`${this.urlBase}/`+username);
+    return this.http.delete(`${this.urlBase}/` + username);
   }
 
   getJWTField(campo: string): string {
@@ -96,6 +98,7 @@ export class SecurityService {
   logout() {
     localStorage.removeItem(this.keyToken);
     localStorage.removeItem(this.expirationKey);
+    this.router.navigate([UrlStrings.urlLogin]);
   }
 
   getAdminRol(): string {
@@ -115,7 +118,7 @@ export class SecurityService {
       return '';
     }
   }
-  
+
   getUserRol(): string {
     const user = this.getJWTField(UserRolStrings.isUser);
     if (user) {

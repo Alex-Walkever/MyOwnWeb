@@ -10,10 +10,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { TabTitleComponent } from "../../../../util/tab-title/tab-title.component";
+
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [LoadingComponent, MatCardModule, TranslateModule, MatButtonModule, MatIconModule, MatDividerModule],
+  imports: [LoadingComponent, MatCardModule, TranslateModule, MatButtonModule, MatIconModule, MatDividerModule, TabTitleComponent],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.css',
 })
@@ -83,6 +85,7 @@ export class ExperienceComponent implements AfterViewInit {
   goToUrl(url: string) {
     window.open(url, "_blank");
   }
+
   evenNumer(value: number){
     let cardElement = document.getElementById(`card${+value}`);
     let dividerElement1 = document.getElementById(`divider1${+value}`);

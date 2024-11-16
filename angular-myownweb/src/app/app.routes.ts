@@ -21,7 +21,7 @@ export const routes: Routes = [
 
     { path: UrlStrings.urlAboutMe, component: AboutMeComponent },
 
-    { path: UrlStrings.urlExperience, component: ExperienceComponent },
+    { path: UrlStrings.urlExperience, component: ExperienceComponent},
 
     { path: UrlStrings.urlLogin, component: LoginComponent },
     { path: UrlStrings.urlRegister, component: RegisterComponent },
