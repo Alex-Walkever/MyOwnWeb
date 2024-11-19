@@ -37,6 +37,23 @@
                 </a>
             </mat-card-actions>
         </mat-card>
+
+        <mat-card class="card-container">
+            <mat-card-header>
+                <mat-card-title>
+                    {{"contactMe.inbox" | translate}}
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                    {{"contactMe.inbox.description" | translate}}
+            </mat-card-content>
+            <mat-card-actions>
+                <a mat-button routerLink="{{[urlStrings.urlInbox]}}">
+                    <mat-icon>visibility</mat-icon>
+                    {{"look" | translate}}
+                </a>
+            </mat-card-actions>
+        </mat-card>
     </ng-container>
 </app-authorization>
 

@@ -49,7 +49,7 @@ namespace MyOwnWeb.Controllers
                 .ProjectTo<ExperienceDTO>(mapper.ConfigurationProvider).ToListAsync();
         }
 
-        [HttpGet("{id:int}", Name = "GetById")]
+        [HttpGet("{id:int}", Name = "GetExperienceById")]
         [OutputCache(Tags = [cacheTag])]
         public async Task<ActionResult<ExperienceDTO>> Get(int id)
         {
@@ -59,7 +59,7 @@ namespace MyOwnWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ExperienceCreationDTO experienceCreation)
         {
-            return await Post<ExperienceCreationDTO, Experience, ExperienceDTO>(experienceCreation, "GetById");
+            return await Post<ExperienceCreationDTO, Experience, ExperienceDTO>(experienceCreation, "GetExperienceById");
         }
 
         [HttpPut("{id:int}")]

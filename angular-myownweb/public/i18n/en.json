@@ -71,5 +71,19 @@
     "reload": "Reload",
     "filter": "Filter",
     "copyrights": "All copyrights to Alejandro Rodríguez Navarro.",
-    "contactMe": "Contact me"
+    "contactMe": "Contact me",
+    "contactMe.inbox": "Inbox",
+    "contactMe.inbox.description": "Look at the messages that have arrived",
+    "contactMe.name": "Name",
+    "contactMe.message": "Message",
+    "contactMe.message.readed": "Readed",
+    "contactMe.message.obtained": "Obtained",
+    "contactMe.message.remove": "Do you want to delete this message?",
+    "contactMe.phoneNumber": "Phone number",
+    "contactMe.send": "Send message",
+    "contactMe.err.name" : "Name is required",
+    "contactMe.err.message" : "Message is required",
+    "contactMe.err.message.length" : "The message must have at least {{value}} characters",
+    "look": "Look",
+    "id": "Id"
 }

@@ -13,6 +13,7 @@ export class UrlStrings {
   static urlCreateExperience = this.urlExperienceControlPanel+'/create-experience';
   static urlEditExperience = this.urlExperienceControlPanel+'/edit-experience';
   static urlContactMe = 'contact-me';
+  static urlInbox = 'inbox';
 }
 
 export class LocalStorageStrings{

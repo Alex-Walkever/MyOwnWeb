@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiURL: '',
+    apiURL: 'https://myownweb20241118170943.azurewebsites.net/api',
     webTitle: 'Alejandro Rodriguez Navarro'
 };

@@ -75,6 +75,7 @@ namespace MyOwnWeb.Controllers
             if (result.Succeeded)
             {
                 await outputCacheStore.EvictByTagAsync(cacheTag, default);
+                await userManager.AddClaimAsync(user, new Claim("isuser", "true"));
                 return await BuildToken(user);
             }
             else

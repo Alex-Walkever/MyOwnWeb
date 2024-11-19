@@ -15,13 +15,14 @@ import { EditClaimsUserComponent } from './ui/pages/authorization-page/edit-clai
 import { ExperienceControlPanelComponent } from './ui/pages/control-panel-page/experience-control-panel/experience-control-panel.component';
 import { isAdminGuard, isUserGuard } from './lib/guards/is-admin.guard';
 import { ContactMeComponent } from './ui/pages/contact-me-page/contact-me/contact-me.component';
+import { InboxControlPanelComponent } from './ui/pages/control-panel-page/inbox-control-panel/inbox-control-panel.component';
 
 export const routes: Routes = [
     { path: UrlStrings.urlHome, component: MainPageComponent },
 
     { path: UrlStrings.urlAboutMe, component: AboutMeComponent },
 
-    { path: UrlStrings.urlExperience, component: ExperienceComponent},
+    { path: UrlStrings.urlExperience, component: ExperienceComponent },
 
     { path: UrlStrings.urlLogin, component: LoginComponent },
     { path: UrlStrings.urlRegister, component: RegisterComponent },
@@ -38,6 +39,7 @@ export const routes: Routes = [
     },
     { path: UrlStrings.urlCreateExperience, component: CreateExperienceComponent, canActivate: [isAdminGuard] },
     { path: UrlStrings.urlEditExperience + '/:id', component: EditExperienceComponent, canActivate: [isAdminGuard] },
+    { path: UrlStrings.urlControlPanel + '/' + UrlStrings.urlInbox, component: InboxControlPanelComponent, canActivate: [isAdminGuard] },
 
     { path: UrlStrings.urlShowTranslateStrings, component: ShowTranslateStringsComponent, canActivate: [isAdminGuard] },
     { path: UrlStrings.urlContactMe, component: ContactMeComponent },

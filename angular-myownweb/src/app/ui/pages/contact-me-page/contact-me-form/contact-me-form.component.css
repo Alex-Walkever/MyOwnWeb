@@ -1,0 +1,23 @@
+.section-container {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.section-container div {
+    margin-bottom: 10px;
+}
+
+.text-container {
+    min-width: 150px;
+    max-height: 1500px;
+    width: 1000px;
+}
+
+.text-container mat-form-field {
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+    width: 100%;
+}

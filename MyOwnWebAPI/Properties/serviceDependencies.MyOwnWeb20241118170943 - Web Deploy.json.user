@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "apis1": {
+      "restored": true,
+      "restoreTime": "2024-11-18T23:16:28.1116566Z"
+    },
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2024-11-18T23:23:54.4237133Z"
+    }
+  },
+  "parameters": {
+    "mssql1.subscriptionId": {
+      "Name": "mssql1.subscriptionId",
+      "Type": "subscription",
+      "Value": "cdad177d-c4a4-4d71-a0c4-4cab9cb90a8d"
+    },
+    "mssql1.resourceGroupName": {
+      "Name": "mssql1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "MyOwnWeb-ResourceGroup"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<form (submit)="sendMessage()" [formGroup]="form">
+<section class="section-container">
+    <h2 style="text-align: center;">{{title}}</h2>
+
+    <div class="text-container">
+        <mat-form-field appearance="outline">
+            <mat-label>{{'contactMe.name' | translate}}</mat-label>
+            <input matInput [formControl]="form.controls.name" />
+            <mat-error>{{getNameErrors()}}</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="text-container">
+        <mat-form-field appearance="outline">
+            <mat-label>{{'authorization.email' | translate}}</mat-label>
+            <input matInput [formControl]="form.controls.email" />
+            <mat-error>{{getEmailErrors()}}</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="text-container">
+        <mat-form-field appearance="outline">
+            <mat-label>{{'contactMe.phoneNumber' | translate}}</mat-label>
+            <input matInput [formControl]="form.controls.phoneNumber" />
+        </mat-form-field>
+    </div>
+
+    <div class="text-container">
+        <mat-form-field appearance="outline">
+            <mat-label>{{'contactMe.message' | translate}}</mat-label>
+            <textarea cdkTextareaAutosize cdkAutosizeMinRows="12" matInput [formControl]="form.controls.message"></textarea>
+            <mat-error>{{getMessageErrors()}}</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <button class="container-Buttons" type="submit" mat-flat-button [disabled]="form.invalid">{{"contactMe.send" | translate}}</button>
+    </div>
+</section>
+</form>

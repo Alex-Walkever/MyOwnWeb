@@ -38,3 +38,21 @@ html {
 .space {
     flex: 1 1 auto;
 }
+
+.walkever-section-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.walkever-box-container{
+    border: groove;
+    box-shadow: 10px 10px 8px #888888;
+    padding: 20px;
+}
+
+.walkever-expansion-container{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

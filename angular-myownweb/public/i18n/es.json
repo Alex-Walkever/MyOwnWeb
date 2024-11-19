@@ -71,5 +71,19 @@
     "reload": "Recargar",
     "filter": "Filtro",
     "copyrights": "Todos los derechos reservados a Alejandro Rodríguez Navarro.",
-    "contactMe": "Contáctame"
+    "contactMe": "Contáctame",
+    "contactMe.inbox": "Bandeja de entrada",
+    "contactMe.inbox.description": "Mira los mensajes que han llegado",
+    "contactMe.name": "Nombre",
+    "contactMe.message": "Mensaje",
+    "contactMe.message.readed": "Leído",
+    "contactMe.message.obtained": "Obtenido",
+    "contactMe.message.remove": "¿Quieres eliminar este mensaje?",
+    "contactMe.phoneNumber": "Teléfono",
+    "contactMe.send": "Mandar mensaje",
+    "contactMe.err.name" : "El nombre es obligatorio",
+    "contactMe.err.message" : "El mensaje es obligatorio",
+    "contactMe.err.message.length" : "El mensaje debe tener al menos {{value}} caracteres",
+    "look": "Mirar",
+    "id": "Identificación"
 }

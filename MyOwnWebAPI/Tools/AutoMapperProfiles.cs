@@ -11,6 +11,7 @@ namespace MyOwnWeb.Tools
         {
             ConfigureExperienceMapping();
             ConfigureUserMapping();
+            ConfigureContactMeMapping();
         }
 
         private void ConfigureExperienceMapping()
@@ -23,6 +24,12 @@ namespace MyOwnWeb.Tools
         {
             CreateMap<IdentityUser, UserDTO>().ForMember(x => x.Claims, 
                 userDTO => userDTO.Ignore());
+        }
+
+        private void ConfigureContactMeMapping()
+        {
+            CreateMap<ContactMeCreationDTO, ContactMe>(); 
+            CreateMap<ContactMe, ContactMeDTO>();
         }
     }
 }

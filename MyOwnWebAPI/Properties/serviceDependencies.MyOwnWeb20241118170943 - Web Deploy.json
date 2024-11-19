@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "apis1": {
+      "ignored": "true",
+      "type": "apis.azure"
+    },
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/MyOwnWeb20241118170943/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsDefaultConnection_6F17E53E12",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/myownwebdbserver/databases/MyOwnWeb_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DefaultConnection",
+      "dynamicId": null
+    }
+  }
+}
