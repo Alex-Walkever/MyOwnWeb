@@ -129,3 +129,7 @@ export function getHeaderString<TDTO>(response: HttpResponse<TDTO>, tag: string)
     const header = response.headers.get(tag) as string;
     return parseInt(header, 10);
 }
+
+export function goToUrlInOtherWindow(url: string) {
+    window.open(url, "_blank");
+  }

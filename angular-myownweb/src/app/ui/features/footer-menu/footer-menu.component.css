@@ -27,3 +27,23 @@
     align-items: center;
     margin-bottom: 8px;
 }
+
+.icon-img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: height;
+}
+
+.social-container p{
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+}
+
+.social-container button{
+    margin-right: 10px;
+}
+
+  

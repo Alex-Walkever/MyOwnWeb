@@ -16,6 +16,9 @@ import { ExperienceControlPanelComponent } from './ui/pages/control-panel-page/e
 import { isAdminGuard, isUserGuard } from './lib/guards/is-admin.guard';
 import { ContactMeComponent } from './ui/pages/contact-me-page/contact-me/contact-me.component';
 import { InboxControlPanelComponent } from './ui/pages/control-panel-page/inbox-control-panel/inbox-control-panel.component';
+import { AboutControlPanelComponent } from './ui/pages/control-panel-page/about-control-panel/about-control-panel.component';
+import { CreateAboutMeComponent } from './ui/pages/about-me-page/create-about-me/create-about-me.component';
+import { EditAboutMeComponent } from './ui/pages/about-me-page/edit-about-me/edit-about-me.component';
 
 export const routes: Routes = [
     { path: UrlStrings.urlHome, component: MainPageComponent },
@@ -40,6 +43,9 @@ export const routes: Routes = [
     { path: UrlStrings.urlCreateExperience, component: CreateExperienceComponent, canActivate: [isAdminGuard] },
     { path: UrlStrings.urlEditExperience + '/:id', component: EditExperienceComponent, canActivate: [isAdminGuard] },
     { path: UrlStrings.urlControlPanel + '/' + UrlStrings.urlInbox, component: InboxControlPanelComponent, canActivate: [isAdminGuard] },
+    { path: UrlStrings.urlControlPanel + '/' + UrlStrings.urlAboutMeControlPanel, component: AboutControlPanelComponent, canActivate: [isAdminGuard] },
+    { path: UrlStrings.urlCreateAboutMe, component: CreateAboutMeComponent, canActivate: [isAdminGuard] },
+    { path: UrlStrings.urlEditAboutMe + '/:id', component: EditAboutMeComponent, canActivate: [isAdminGuard] },
 
     { path: UrlStrings.urlShowTranslateStrings, component: ShowTranslateStringsComponent, canActivate: [isAdminGuard] },
     { path: UrlStrings.urlContactMe, component: ContactMeComponent },

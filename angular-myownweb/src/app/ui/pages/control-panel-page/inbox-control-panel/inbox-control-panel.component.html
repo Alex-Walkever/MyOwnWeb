@@ -59,7 +59,7 @@
 
             <ng-container matColumnDef="obtained">
                 <th mat-header-cell *matHeaderCellDef>{{"contactMe.message.obtained" | translate}}</th>
-                <td mat-cell *matCellDef="let element">{{element.obtained}}</td>
+                <td mat-cell *matCellDef="let element">{{removeT(element.obtained)}}</td>
             </ng-container>
 
             <ng-container matColumnDef="actions">

@@ -1,1 +1,62 @@
-<p>do to</p>
+<form (submit)="saveChanges()" [formGroup]="form">
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">
+                    <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" />
+                </mat-icon>
+                <div>{{'changeLanguage.en'| translate}}</div>
+            </ng-template>
+
+            <mat-form-field class="text-container" style="margin-top: 10px;" appearance="outline">
+                <mat-label>{{'aboutMe.title'| translate}}</mat-label>
+                <input matInput [formControl]="form.controls.enTitle" />
+                <mat-error>{{getErrorTitle()}}</mat-error>
+            </mat-form-field>
+
+            <div></div>
+            <mat-form-field class="text-container" appearance="outline">
+                <mat-label>{{'aboutMe.description'| translate}}</mat-label>
+                <textarea cdkTextareaAutosize cdkAutosizeMinRows="12" matInput [formControl]="form.controls.enDescription"></textarea>
+                <mat-error>{{getErrorDescription()}}</mat-error>
+            </mat-form-field>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">
+                    <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/MX.svg" />
+                </mat-icon>
+                <div>{{'changeLanguage.es'| translate}}</div>
+            </ng-template>
+
+            <mat-form-field class="text-container" style="margin-top: 10px;" appearance="outline">
+                <mat-label>{{'aboutMe.title'| translate}}</mat-label>
+                <input matInput [formControl]="form.controls.esTitle" />
+            </mat-form-field>
+
+            <div></div>
+            <mat-form-field class="text-container" appearance="outline">
+                <mat-label>{{'aboutMe.description'| translate}}</mat-label>
+                <textarea cdkTextareaAutosize cdkAutosizeMinRows="12" matInput [formControl]="form.controls.esDescription"></textarea>
+            </mat-form-field>
+        </mat-tab>
+    </mat-tab-group>
+
+    <div style="margin-top: 1rem;"></div>
+
+    <mat-form-field appearance="outline">
+        <mat-label>{{'aboutMe.tag'| translate}}</mat-label>
+        <mat-select [formControl]="form.controls.tag">
+            @for (tag of aboutMeTags; track $index) {
+                <mat-option [value]="tag.value">{{tag.viewValue | translate}}</mat-option>
+            }
+        </mat-select>
+        <mat-error>{{getErrorTag()}}</mat-error>
+    </mat-form-field>
+
+    <div class="container-Buttons">
+        <button type="submit" mat-flat-button [disabled]="form.invalid">{{"save" | translate}}</button>
+        <a mat-stroked-button routerLink="/{{urlStrings.urlControlPanel+'/'+urlStrings.urlExperienceControlPanel}}">{{"cancel" | translate}}</a>
+    </div>
+</form>

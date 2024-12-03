@@ -12,6 +12,9 @@ export class UrlStrings {
   static urlExperienceControlPanel = 'experience-control-panel';
   static urlCreateExperience = this.urlExperienceControlPanel+'/create-experience';
   static urlEditExperience = this.urlExperienceControlPanel+'/edit-experience';
+  static urlAboutMeControlPanel = 'about-me-control-panel';
+  static urlCreateAboutMe = this.urlAboutMeControlPanel+'/create-about-me';
+  static urlEditAboutMe = this.urlAboutMeControlPanel+'/edit-about-me';
   static urlContactMe = 'contact-me';
   static urlInbox = 'inbox';
 }

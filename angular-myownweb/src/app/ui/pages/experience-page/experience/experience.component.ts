@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, inject } from '@angular/core';
 import { ExperienceService } from '../../../../api/services/experience.service';
 import { HeadersResponses, LocalStorageStrings } from '../../../../util/utility-strings';
-import { getHeaderString, getYearMonthString } from '../../../../util/utility-functions';
+import { getHeaderString, getYearMonthString, goToUrlInOtherWindow } from '../../../../util/utility-functions';
 import { ExperienceDTO } from '../../../../api/dtos/experience-dtos';
 import { HttpResponse } from '@angular/common/http';
 import { LoadingComponent } from "../../../../util/loading/loading.component";
@@ -28,6 +28,7 @@ export class ExperienceComponent implements AfterViewInit {
   progressHeight: number = 0;
 
   yearMonth = getYearMonthString;
+  goToUrl = goToUrlInOtherWindow;
 
   ngAfterViewInit(): void {
   }
@@ -80,10 +81,6 @@ export class ExperienceComponent implements AfterViewInit {
     }
 
     return rntValue;
-  }
-
-  goToUrl(url: string) {
-    window.open(url, "_blank");
   }
 
   evenNumer(value: number){

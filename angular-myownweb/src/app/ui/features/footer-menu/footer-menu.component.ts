@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterLink } from '@angular/router';
+import { goToUrlInOtherWindow } from '../../../util/utility-functions';
+import { NgOptimizedImage } from '@angular/common';
 
 export interface Tile {
   cols: number;
@@ -16,7 +18,7 @@ export interface Tile {
 @Component({
   selector: 'app-footer-menu',
   standalone: true,
-  imports: [MatIconModule, TranslateModule, MatButtonModule, MatProgressBarModule, MatGridListModule, RouterLink],
+  imports: [MatIconModule, TranslateModule, MatButtonModule, MatProgressBarModule, MatGridListModule, RouterLink, NgOptimizedImage],
   templateUrl: './footer-menu.component.html',
   styleUrl: './footer-menu.component.css'
 })
@@ -33,6 +35,8 @@ export class FooterMenuComponent {
     {cols: 2, rows: 1},
   ];
 
+  goToUrl = goToUrlInOtherWindow;
+  
   constructor() {
     var lang = localStorage.getItem(LocalStorageStrings.language);
     if (lang) {

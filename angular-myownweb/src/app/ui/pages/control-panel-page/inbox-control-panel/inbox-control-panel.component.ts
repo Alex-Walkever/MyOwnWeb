@@ -11,7 +11,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { extractErrors, getHeaderString, getTranslation, getTranslationWithParams } from '../../../../util/utility-functions';
+import { extractErrors, getHeaderString, getTranslation, getTranslationWithParams, splitDateTime } from '../../../../util/utility-functions';
 import Swal from 'sweetalert2';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -42,6 +42,8 @@ export class InboxControlPanelComponent{
   errors: string[] = [];
   propertiesList!: MatTableDataSource<ContactMeDTO>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  removeT = splitDateTime;
 
   constructor() {
     this.loadRecords();

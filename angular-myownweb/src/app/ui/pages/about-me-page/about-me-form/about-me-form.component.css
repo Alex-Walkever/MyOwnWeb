@@ -1,0 +1,26 @@
+.text-container {
+    margin-top: 10px;
+    min-width: 150px;
+    max-height: 1500px;
+    width: 1000px;
+}
+
+.text-container mat-form-field {
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+    width: 100%;
+}
+
+.tab-icon {
+    margin-right: 8px;
+    margin-bottom: 9px;
+}
+
+.area-form-big, .area-form-small {
+    min-width: 150px;
+    max-width: 300px;
+    width: 100%;
+}

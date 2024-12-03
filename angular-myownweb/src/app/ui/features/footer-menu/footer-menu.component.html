@@ -1,6 +1,6 @@
 <!-- <footer> -->
 <mat-progress-bar mode="buffer"></mat-progress-bar>
-<mat-grid-list [cols]="2" rowHeight="150px">
+<mat-grid-list [cols]="3" rowHeight="150px">
     <mat-grid-tile>
         <div class="copyrights-container">
             <p>
@@ -11,6 +11,23 @@
                 <mat-icon>person</mat-icon>
                 {{'contactMe' | translate}}
             </a>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="social-container">
+            <p>{{'myNetworks' | translate}}</p>
+
+            <button mat-fab (click)="goToUrl('https://www.instagram.com/walkever/')">
+                <img class="icon-img-container" src="social-media-icon/instagram.png">
+            </button>
+
+            <button mat-fab (click)="goToUrl('https://bsky.app/profile/walkever.bsky.social')">
+                <img class="icon-img-container" src="social-media-icon/bluesky.png">
+            </button>
+
+            <button mat-fab (click)="goToUrl('https://www.linkedin.com/in/alejandro-rodriguez-navarro92/')">
+                <img class="icon-img-container" src="social-media-icon/linkedin.png">
+            </button>
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
