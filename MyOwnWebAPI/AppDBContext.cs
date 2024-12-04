@@ -15,7 +15,7 @@ namespace MyOwnWeb
         }
 
         public DbSet<Experience> Experiences { get; set; }
-        public DbSet<AboutMeDescription> AboutMeDescriptions { get; set; }
+        public DbSet<AboutMe> AboutMeList { get; set; }
         public DbSet<ContactMe> ContactMes { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyOwnWeb;
 
@@ -11,9 +12,11 @@ using MyOwnWeb;
 namespace MyOwnWeb.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241204161559_aboutmeList")]
+    partial class aboutmeList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -242,8 +245,7 @@ namespace MyOwnWeb.Migrations
                     b.Property<string>("EsTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.PrimitiveCollection<string>("Pictures")
-                        .IsRequired()
+                    b.Property<string>("Pictures")
                         .IsUnicode(false)
                         .HasColumnType("varchar(max)");
 
@@ -253,7 +255,7 @@ namespace MyOwnWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AboutMeList", (string)null);
+                    b.ToTable("AboutMeList");
                 });
 
             modelBuilder.Entity("MyOwnWeb.Entities.ContactMe", b =>
@@ -287,7 +289,7 @@ namespace MyOwnWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ContactMes", (string)null);
+                    b.ToTable("ContactMes");
                 });
 
             modelBuilder.Entity("MyOwnWeb.Entities.Experience", b =>
@@ -344,7 +346,7 @@ namespace MyOwnWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Experiences", (string)null);
+                    b.ToTable("Experiences");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

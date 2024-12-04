@@ -5,6 +5,7 @@
     "home": "Home",
     "showStrings": "Show translate strings",
     "aboutMe": "About me",
+    "aboutMe.create": "Create about me",
     "aboutMe.title": "About me title",
     "aboutMe.description": "About me description",
     "aboutMe.tag": "About me tag",
@@ -99,5 +100,6 @@
     "contactMe.err.message.length" : "The message must have at least {{value}} characters",
     "look": "Look",
     "id": "Id",
-    "myNetworks": "My social networks"
+    "myNetworks": "My social networks",
+    "imgLoad": "Select pictures"
 }

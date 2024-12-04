@@ -14,12 +14,13 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { RouterLink } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { AboutMeTags } from '../../../../util/utility-variables';
+import { InputImgComponent } from "../../../../util/input-img/input-img.component";
 
 @Component({
   selector: 'app-about-me-form',
   standalone: true,
   imports: [MatButtonModule, RouterLink, MatFormFieldModule, ReactiveFormsModule, MatInputModule, TranslateModule,
-    MatDatepickerModule, MatTabsModule, MatIconModule, MatSelectModule],
+    MatDatepickerModule, MatTabsModule, MatIconModule, MatSelectModule, InputImgComponent],
   templateUrl: './about-me-form.component.html',
   styleUrl: './about-me-form.component.css'
 })
@@ -57,7 +58,7 @@ export class AboutMeFormComponent implements OnInit {
     enDescription: ['', { validators: [Validators.required] }],
     esDescription: new FormControl<string | null>(null),
     tag: ['', { validators: [Validators.required] }],
-    pictures: new FormControl<File[] | string[] | null>(null)
+    pictures: new FormControl<FileList | string[] | null>(null)
   })
 
   getErrorTitle(): string {
@@ -106,6 +107,10 @@ export class AboutMeFormComponent implements OnInit {
       rntValue = this.form.controls.esTitle.getRawValue();
     }
     this.editSubTitle.emit(rntValue);
+  }
+
+  selectedFiles(files: FileList){
+    this.form.controls.pictures.setValue(files);
   }
 }
 

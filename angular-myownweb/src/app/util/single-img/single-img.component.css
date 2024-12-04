@@ -1,0 +1,17 @@
+button{
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.section-container{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+td{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}

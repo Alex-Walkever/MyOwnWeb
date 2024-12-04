@@ -4,7 +4,7 @@ export interface AboutMeCreationDTO{
     enDescription: string;
     esDescription: string;
     tag: string;
-    pictures?: File[];
+    pictures?: FileList;
 }
 
 export interface AboutMeDTO{

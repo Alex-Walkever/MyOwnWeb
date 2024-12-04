@@ -12,6 +12,7 @@ namespace MyOwnWeb.Tools
             ConfigureExperienceMapping();
             ConfigureUserMapping();
             ConfigureContactMeMapping();
+            ConfigureAboutMeMapping();
         }
 
         private void ConfigureExperienceMapping()
@@ -30,6 +31,13 @@ namespace MyOwnWeb.Tools
         {
             CreateMap<ContactMeCreationDTO, ContactMe>(); 
             CreateMap<ContactMe, ContactMeDTO>();
+        }
+
+        private void ConfigureAboutMeMapping()
+        {
+            CreateMap<AboutMeCreationDTO, AboutMe>().ForMember(x => x.Pictures, 
+                options => options.Ignore());
+            CreateMap<AboutMe, AboutMeDTO>();
         }
     }
 }

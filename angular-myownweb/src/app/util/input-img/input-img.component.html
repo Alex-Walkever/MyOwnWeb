@@ -1,0 +1,18 @@
+<h4>{{title | translate}}</h4>
+
+<div>
+    <button type="button" mat-raised-button (click)="fileLoader.click()">{{"imgLoad" | translate}}</button>
+    <input type="file" multiple="true" hidden #fileLoader accept="image/*" (change)="change($event)"/>
+</div>
+
+<div>
+    @if (base64Images){
+        @for (base64 of base64Images; track $index) {
+            <app-single-img [src]="base64" width="169" height="250" [id]="$index" (remove)="remove($event)"></app-single-img>
+        }
+    } @else if (urlCurrentsImages) {
+        @for (currentImage of urlCurrentsImages; track $index) {
+            <app-single-img [src]="currentImage" width="169" height="250" [id]="$index" (remove)="remove($event)"></app-single-img>
+        }
+    }
+</div>

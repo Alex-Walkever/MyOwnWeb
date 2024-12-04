@@ -5,6 +5,7 @@
     "home": "Inicio",
     "showStrings": "Mostrar lineas traducidas",
     "aboutMe": "Acerca de mí",
+    "aboutMe.create": "Crea acerca de mí",
     "aboutMe.title": "Título sobre mí",
     "aboutMe.description": "Descripción sobre mí",
     "aboutMe.tag": "Etiqueta sobre mí",
@@ -99,5 +100,6 @@
     "contactMe.err.message.length" : "El mensaje debe tener al menos {{value}} caracteres",
     "look": "Mirar",
     "id": "Identificación",
-    "myNetworks": "Mis redes sociales"
+    "myNetworks": "Mis redes sociales",
+    "imgLoad": "Seleccionar imágenes"
 }
