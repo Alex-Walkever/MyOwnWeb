@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using MyOwnWeb;
+using MyOwnWeb.Interfaces;
+using MyOwnWeb.Services;
 using MyOwnWeb.Tools;
 using System.Text;
 
@@ -73,6 +75,7 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddTransient<IFileStorage, AzureFileStorage>();
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
